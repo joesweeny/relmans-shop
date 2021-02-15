@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { bool, func } from 'prop-types';
 import { faBars, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -16,8 +17,8 @@ const ToolbarWrapper = styled.div`
 
   svg {
     cursor: pointer;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
 
     &:hover {
       transform: scale(1.3);
@@ -40,9 +41,8 @@ const ToolbarWrapper = styled.div`
   }
 `;
 
-const Toolbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [basketOpen, setBasketOpen] = useState(false);
+const Toolbar = (props) => {
+  const { basketOpen, clickBasket, clickMenu, menuOpen } = props;
 
   return (
     <ToolbarWrapper>
@@ -50,17 +50,24 @@ const Toolbar = () => {
         color={menuOpen ? '#f1943c' : '#ffffff'}
         icon={faBars}
         size="2x"
-        onClick={() => setMenuOpen(!menuOpen)}
+        onClick={() => clickMenu(!menuOpen)}
       />
       <Logo />
       <FontAwesomeIcon
         color={basketOpen ? '#f1943c' : '#ffffff'}
         icon={faShoppingBasket}
         size="2x"
-        onClick={() => setBasketOpen(!basketOpen)}
+        onClick={() => clickBasket(!basketOpen)}
       />
     </ToolbarWrapper>
   );
+};
+
+Toolbar.propTypes = {
+  basketOpen: bool.isRequired,
+  clickBasket: func.isRequired,
+  menuOpen: bool.isRequired,
+  clickMenu: func.isRequired,
 };
 
 export default Toolbar;
