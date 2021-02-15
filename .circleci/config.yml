@@ -11,14 +11,6 @@ jobs:
       - node/install-packages
       - run:
           command: npm run lint
-      - run:
-          command: npm run test
-      - run:
-          command: npm run build
-      - persist_to_workspace:
-          root: .
-          paths:
-            - build/*
 
 workflows:
   build-test-deploy:
