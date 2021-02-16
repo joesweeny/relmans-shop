@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import Menu from './components/Toolbar/Menu/Menu';
 import Toolbar from './components/Toolbar/Toolbar';
 
 const Container = styled.div`
@@ -11,9 +12,18 @@ const Container = styled.div`
 `;
 
 const App = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [basketOpen, setBasketOpen] = useState(false);
+
   return (
     <Container>
-      <Toolbar />
+      <Toolbar
+        basketOpen={basketOpen}
+        menuOpen={menuOpen}
+        clickBasket={setBasketOpen}
+        clickMenu={setMenuOpen}
+      />
+      <Menu open={menuOpen} />
       Relmans Shop
     </Container>
   );
