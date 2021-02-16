@@ -9,7 +9,7 @@ const CategoryMenuItemWrapper = styled.div`
   background-color: #eeeeee;
   border-bottom: 1px solid #cecbcbee;
   color: #3d604c;
-  font-weight: 600;
+  font-weight: 500;
 
   p {
     padding-left: 15px;
