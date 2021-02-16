@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import Menu from './components/Toolbar/Menu/Menu';
+import CategoryContextProvider from './context/CategoryContext';
+import Dashboard from './components/Dashboard/Dashboard';
 import Toolbar from './components/Toolbar/Toolbar';
 
 const Container = styled.div`
@@ -12,20 +13,21 @@ const Container = styled.div`
 `;
 
 const App = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(true);
   const [basketOpen, setBasketOpen] = useState(false);
 
   return (
-    <Container>
-      <Toolbar
-        basketOpen={basketOpen}
-        menuOpen={menuOpen}
-        clickBasket={setBasketOpen}
-        clickMenu={setMenuOpen}
-      />
-      <Menu open={menuOpen} />
-      Relmans Shop
-    </Container>
+    <CategoryContextProvider>
+      <Container>
+        <Toolbar
+          basketOpen={basketOpen}
+          menuOpen={menuOpen}
+          clickBasket={setBasketOpen}
+          clickMenu={setMenuOpen}
+        />
+        <Dashboard basketOpen={basketOpen} menuOpen={menuOpen} />
+      </Container>
+    </CategoryContextProvider>
   );
 };
 
