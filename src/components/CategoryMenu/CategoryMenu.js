@@ -18,12 +18,12 @@ const CategoryMenuWrapper = styled.div`
   left: 0;
 
   @media (min-width: 756px) {
-    width: 50vw;
+    width: 30vw;
   }
 
   @media (min-width: 1024px) {
     position: relative;
-    width: 270px;
+    width: 230px;
   }
 `;
 
