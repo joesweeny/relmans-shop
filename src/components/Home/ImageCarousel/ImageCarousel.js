@@ -18,6 +18,12 @@ const CarouselWrapper = styled.div`
 
   @media (min-width: 758px) {
     img {
+      height: 600px;
+    }
+  }
+
+  @media (min-width: 959px) {
+    img {
       height: 800px;
     }
   }
