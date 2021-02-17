@@ -10,19 +10,21 @@ import image4 from '../../../assets/carousel/potatoes.jpg';
 
 const CarouselWrapper = styled.div`
   width: 100%;
-  border: 2px solid #cecbcbee;
-  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.23);
 
   img {
-    height: 250px;
+    height: 400px;
+    filter: brightness(50%);
+  }
+
+  @media (min-width: 758px) {
+    img {
+      height: 600px;
+    }
   }
 
   @media (min-width: 959px) {
-    width: 50%;
-    height: 400px;
-
     img {
-      height: 400px;
+      height: 800px;
     }
   }
 `;
@@ -33,10 +35,9 @@ const ImageCarousel = () => {
       <Carousel
         autoPlay
         infiniteLoop
-        interval={5000}
+        interval={4000}
         showThumbs={false}
-        stopOnHover
-        transitionTime={600}
+        transitionTime={400}
       >
         <img src={image1} alt="chief" />
         <img src={image2} alt="flash" />

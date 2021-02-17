@@ -14,7 +14,11 @@ const DashboardWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   flex: 1;
-  overflow-x: hidden;
+  margin-top: 60px;
+
+  @media (min-width: 758px) {
+    margin-top: 80px;
+  }
 `;
 
 const Dashboard = (props) => {

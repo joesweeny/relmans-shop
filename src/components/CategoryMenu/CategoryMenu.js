@@ -24,7 +24,6 @@ const CategoryMenuWrapper = styled.div`
   }
 
   @media (min-width: 1024px) {
-    position: relative;
     width: 230px;
   }
 `;
