@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { bool } from 'prop-types';
 
+import BasketMenu from '../BasketMenu/BasketMenu';
 import CategoryMenu from '../CategoryMenu/CategoryMenu';
 
 const DashboardWrapper = styled.div`
@@ -18,8 +19,8 @@ const Dashboard = (props) => {
   return (
     <DashboardWrapper>
       <CategoryMenu open={menuOpen} />
-      <p>Tab 2</p>
-      <p>Tab 3</p>
+      <p>Relmans Shop</p>
+      <BasketMenu open={basketOpen} />
     </DashboardWrapper>
   );
 };

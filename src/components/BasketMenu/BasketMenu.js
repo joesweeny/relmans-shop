@@ -1,11 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { bool } from 'prop-types';
 import styled from 'styled-components';
 
-import CategoryMenuItem from './CategoryMenuItem/CategoryMenuItem';
-import { CategoryContext } from '../../context/CategoryContext';
-
-const CategoryMenuWrapper = styled.div`
+const BasketMenuWrapper = styled.div`
   display: ${(props) => (props.open ? '-ms-flexbox' : 'none')};
   display: ${(props) => (props.open ? 'flex' : 'none')};
   justify-content: flex-start;
@@ -15,7 +12,7 @@ const CategoryMenuWrapper = styled.div`
   width: 100vw;
   background-color: #3d604c;
   transition: transform 300ms;
-  left: 0;
+  right: 0;
 
   @media (min-width: 756px) {
     width: 50vw;
@@ -27,21 +24,16 @@ const CategoryMenuWrapper = styled.div`
   }
 `;
 
-const CategoryMenu = (props) => {
+const BasketMenu = (props) => {
   const { open } = props;
-  const { categories, loading, error } = useContext(CategoryContext);
 
   return (
-    <CategoryMenuWrapper open={open}>
-      {categories.map((c) => {
-        return <CategoryMenuItem id={c.id} name={c.name} key={c.id} />;
-      })}
-    </CategoryMenuWrapper>
+    <BasketMenuWrapper open={open}>Your basket is empty</BasketMenuWrapper>
   );
 };
 
-CategoryMenu.propTypes = {
+BasketMenu.propTypes = {
   open: bool.isRequired,
 };
 
-export default CategoryMenu;
+export default BasketMenu;
