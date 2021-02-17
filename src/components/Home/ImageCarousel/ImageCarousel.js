@@ -12,13 +12,13 @@ const CarouselWrapper = styled.div`
   width: 100%;
 
   img {
-    height: 400px;
-    filter: brightness(50%);
+    height: 300px;
+    filter: brightness(35%);
   }
 
   @media (min-width: 758px) {
     img {
-      height: 600px;
+      height: 400px;
     }
   }
 
