@@ -12,8 +12,9 @@ const ToolbarWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #3d604c;
-  height: 80px;
+  height: 60px;
   width: 100vw;
+  font-size: 16px;
 
   svg {
     cursor: pointer;
@@ -35,6 +36,9 @@ const ToolbarWrapper = styled.div`
   }
 
   @media (min-width: 758px) {
+    height: 80px;
+    font-size: 20px;
+
     img {
       display: flex;
     }
