@@ -13,6 +13,7 @@ const BasketMenuWrapper = styled.div`
   background-color: #3d604c;
   transition: transform 300ms;
   right: 0;
+  z-index: 1001;
 
   @media (min-width: 756px) {
     width: 50vw;

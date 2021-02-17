@@ -16,6 +16,12 @@ const ToolbarWrapper = styled.div`
   width: 100vw;
   font-size: 16px;
 
+  .menuToggle {
+    @media (min-width: 959px) {
+      display: none;
+    }
+  }
+
   svg {
     cursor: pointer;
     margin-left: 15px;
@@ -55,6 +61,7 @@ const Toolbar = (props) => {
         icon={faBars}
         size="2x"
         onClick={() => clickMenu(!menuOpen)}
+        className="menuToggle"
       />
       <Logo />
       <FontAwesomeIcon
