@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { bool } from 'prop-types';
-import { BrowserRouter } from 'react-router-dom';
+import { bool, func } from 'prop-types';
 
 import BasketMenu from '../BasketMenu/BasketMenu';
 import CategoryMenu from '../CategoryMenu/CategoryMenu';
@@ -22,16 +21,14 @@ const DashboardWrapper = styled.div`
 `;
 
 const Dashboard = (props) => {
-  const { basketOpen, menuOpen } = props;
+  const { basketOpen, menuOpen, clickMenu } = props;
 
   return (
     <ProductContextProvider>
       <DashboardWrapper>
-        <BrowserRouter>
-          <CategoryMenu open={menuOpen} />
-          <Routes />
-          <BasketMenu open={basketOpen} />
-        </BrowserRouter>
+        <CategoryMenu open={menuOpen} click={clickMenu} />
+        <Routes />
+        <BasketMenu open={basketOpen} />
       </DashboardWrapper>
     </ProductContextProvider>
   );
@@ -40,6 +37,7 @@ const Dashboard = (props) => {
 Dashboard.propTypes = {
   basketOpen: bool.isRequired,
   menuOpen: bool.isRequired,
+  clickMenu: func.isRequired,
 };
 
 export default Dashboard;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { BrowserRouter } from 'react-router-dom';
 
 import CategoryContextProvider from './context/CategoryContext';
 import Dashboard from './components/Dashboard/Dashboard';
@@ -19,13 +20,19 @@ const App = () => {
   return (
     <CategoryContextProvider>
       <Container>
-        <Toolbar
-          basketOpen={basketOpen}
-          menuOpen={menuOpen}
-          clickBasket={setBasketOpen}
-          clickMenu={setMenuOpen}
-        />
-        <Dashboard basketOpen={basketOpen} menuOpen={menuOpen} />
+        <BrowserRouter>
+          <Toolbar
+            basketOpen={basketOpen}
+            menuOpen={menuOpen}
+            clickBasket={setBasketOpen}
+            clickMenu={setMenuOpen}
+          />
+          <Dashboard
+            basketOpen={basketOpen}
+            menuOpen={menuOpen}
+            clickMenu={() => setMenuOpen(false)}
+          />
+        </BrowserRouter>
       </Container>
     </CategoryContextProvider>
   );
