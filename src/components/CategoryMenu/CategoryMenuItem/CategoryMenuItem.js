@@ -10,6 +10,7 @@ const CategoryMenuItemWrapper = styled.div`
   border-bottom: 1px solid #cecbcbee;
   color: #3d604c;
   font-weight: 500;
+  font-size: 14px;
 
   p {
     padding-left: 15px;
@@ -17,8 +18,8 @@ const CategoryMenuItemWrapper = styled.div`
 `;
 
 const CategoryImage = styled.img`
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
 `;
 
 const CategoryMenuItem = (props) => {
