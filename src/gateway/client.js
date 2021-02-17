@@ -5,7 +5,7 @@ export const getCategories = async () => {
   return response.data.data.categories;
 };
 
-export const getProducts = async () => {
-  const response = await axios.get('/product');
+export const getProducts = async (categoryId) => {
+  const response = await axios.get('/product', { params: { categoryId } });
   return response.data.data.products;
 };
