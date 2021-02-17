@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { NavLink } from 'react-router-dom';
 import brand from '../../assets/logo.png';
 
 const LogoWrapper = styled.img`
@@ -13,7 +13,11 @@ const LogoWrapper = styled.img`
 `;
 
 const logo = () => {
-  return <LogoWrapper src={brand} />;
+  return (
+    <NavLink to="/">
+      <LogoWrapper src={brand} />
+    </NavLink>
+  );
 };
 
 export default logo;

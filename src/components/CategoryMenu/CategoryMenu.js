@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { bool } from 'prop-types';
+import { bool, func } from 'prop-types';
 import styled from 'styled-components';
 
 import CategoryMenuItem from './CategoryMenuItem/CategoryMenuItem';
@@ -29,7 +29,7 @@ const CategoryMenuWrapper = styled.div`
 `;
 
 const CategoryMenu = (props) => {
-  const { open } = props;
+  const { open, click } = props;
   const { categories, loading, error } = useContext(CategoryContext);
 
   return (
@@ -37,7 +37,14 @@ const CategoryMenu = (props) => {
       {error ?? null}
       <Loader loading={loading}>
         {categories.map((c) => {
-          return <CategoryMenuItem id={c.id} name={c.name} key={c.id} />;
+          return (
+            <CategoryMenuItem
+              id={c.id}
+              name={c.name}
+              key={c.id}
+              click={click}
+            />
+          );
         })}
       </Loader>
     </CategoryMenuWrapper>
@@ -46,6 +53,7 @@ const CategoryMenu = (props) => {
 
 CategoryMenu.propTypes = {
   open: bool.isRequired,
+  click: func.isRequired,
 };
 
 export default CategoryMenu;
