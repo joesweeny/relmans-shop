@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { bool } from 'prop-types';
+import { BrowserRouter } from 'react-router-dom';
 
 import BasketMenu from '../BasketMenu/BasketMenu';
 import CategoryMenu from '../CategoryMenu/CategoryMenu';
+import Routes from '../Routes/Routes';
 
 const DashboardWrapper = styled.div`
   display: -ms-flexbox;
@@ -18,9 +20,11 @@ const Dashboard = (props) => {
 
   return (
     <DashboardWrapper>
-      <CategoryMenu open={menuOpen} />
-      <p>Relmans Shop</p>
-      <BasketMenu open={basketOpen} />
+      <BrowserRouter>
+        <CategoryMenu open={menuOpen} />
+        <Routes />
+        <BasketMenu open={basketOpen} />
+      </BrowserRouter>
     </DashboardWrapper>
   );
 };
