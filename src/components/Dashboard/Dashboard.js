@@ -13,6 +13,7 @@ const DashboardWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   flex: 1;
+  overflow-x: hidden;
 `;
 
 const Dashboard = (props) => {

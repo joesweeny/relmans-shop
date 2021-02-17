@@ -16,6 +16,7 @@ const CategoryMenuWrapper = styled.div`
   background-color: #3d604c;
   transition: transform 300ms;
   left: 0;
+  z-index: 1000;
 
   @media (min-width: 756px) {
     width: 30vw;
