@@ -13,7 +13,7 @@ const Container = styled.div`
 `;
 
 const App = () => {
-  const [menuOpen, setMenuOpen] = useState(window.innerWidth >= 1024);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [basketOpen, setBasketOpen] = useState(false);
 
   return (
