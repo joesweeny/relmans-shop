@@ -3,6 +3,7 @@ import { bool } from 'prop-types';
 import styled from 'styled-components';
 
 import CategoryMenuItem from './CategoryMenuItem/CategoryMenuItem';
+import Loader from '../Loader/Loader';
 import { CategoryContext } from '../../context/CategoryContext';
 
 const CategoryMenuWrapper = styled.div`
@@ -34,9 +35,12 @@ const CategoryMenu = (props) => {
 
   return (
     <CategoryMenuWrapper open={open}>
-      {categories.map((c) => {
-        return <CategoryMenuItem id={c.id} name={c.name} key={c.id} />;
-      })}
+      {error ?? null}
+      <Loader loading={loading}>
+        {categories.map((c) => {
+          return <CategoryMenuItem id={c.id} name={c.name} key={c.id} />;
+        })}
+      </Loader>
     </CategoryMenuWrapper>
   );
 };

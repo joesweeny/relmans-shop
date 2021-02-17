@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import BasketMenu from '../BasketMenu/BasketMenu';
 import CategoryMenu from '../CategoryMenu/CategoryMenu';
 import Routes from '../Routes/Routes';
+import ProductContextProvider from '../../context/ProductContext';
 
 const DashboardWrapper = styled.div`
   display: -ms-flexbox;
@@ -20,13 +21,15 @@ const Dashboard = (props) => {
   const { basketOpen, menuOpen } = props;
 
   return (
-    <DashboardWrapper>
-      <BrowserRouter>
-        <CategoryMenu open={menuOpen} />
-        <Routes />
-        <BasketMenu open={basketOpen} />
-      </BrowserRouter>
-    </DashboardWrapper>
+    <ProductContextProvider>
+      <DashboardWrapper>
+        <BrowserRouter>
+          <CategoryMenu open={menuOpen} />
+          <Routes />
+          <BasketMenu open={basketOpen} />
+        </BrowserRouter>
+      </DashboardWrapper>
+    </ProductContextProvider>
   );
 };
 
