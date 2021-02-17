@@ -16,6 +16,7 @@ const ToolbarWrapper = styled.div`
   width: 100vw;
   font-size: 16px;
   position: fixed;
+  z-index: 1500;
 
   svg {
     cursor: pointer;
