@@ -14,7 +14,7 @@ const Container = styled.div`
 
 const App = () => {
   const [menuOpen, setMenuOpen] = useState(window.innerWidth >= 1024);
-  const [basketOpen, setBasketOpen] = useState(window.innerWidth > 1024);
+  const [basketOpen, setBasketOpen] = useState(false);
 
   return (
     <CategoryContextProvider>

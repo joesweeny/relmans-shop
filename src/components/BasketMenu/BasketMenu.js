@@ -20,8 +20,7 @@ const BasketMenuWrapper = styled.div`
   }
 
   @media (min-width: 1024px) {
-    position: relative;
-    width: 270px;
+    width: 350px;
   }
 `;
 
