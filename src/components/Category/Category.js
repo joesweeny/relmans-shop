@@ -30,7 +30,8 @@ const Category = () => {
   useEffect(() => {
     getProducts(id)
       .then((p) => {
-        setProducts(p);
+        const filtered = p.filter((prod) => prod.status !== 'OUT_OF_SEASON');
+        setProducts(filtered);
         setLoading(false);
       })
       .catch((e) => {
