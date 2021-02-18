@@ -1,22 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router';
 
 import Loader from '../Loader/Loader';
+import ProductList from '../ProductList/ProductList';
+import { getProducts } from '../../gateway/client';
 
 const CategoryWrapper = styled.div`
+  display: -ms-flexbox;
   display: flex;
   flex-direction: column;
-  padding: 30px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
 `;
 
 const Category = () => {
   const { id } = useParams();
 
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    getProducts(id)
+      .then((p) => {
+        setProducts(p);
+        setLoading(false);
+      })
+      .catch((e) => {
+        setError('Error fetching products');
+        setLoading(false);
+      });
+  }, [id]);
+
   return (
     <CategoryWrapper>
-      <Loader loading={false}>
-        <p>Category {id}</p>
+      <Loader loading={loading}>
+        <ProductList products={products} />
       </Loader>
     </CategoryWrapper>
   );
