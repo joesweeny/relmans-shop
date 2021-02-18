@@ -9,8 +9,8 @@ const ProductListWrapper = styled.div`
   display: flex;
   -webkit-flex-direction: row;
   flex-direction: row;
-  -webkit-justify-content: space-around;
-  justify-content: space-around;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
 `;
