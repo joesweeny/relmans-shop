@@ -116,7 +116,7 @@ const Status = styled.div`
 `;
 
 const Product = (props) => {
-  const { id, measurement, name, size, status, price } = props;
+  const { id, priceId, measurement, name, size, status, price } = props;
 
   return (
     <ProductWrapper>
@@ -129,13 +129,21 @@ const Product = (props) => {
         </PriceMeasurement>
         <Status status={status}>{status.replace(/[_-]/g, ' ')}</Status>
       </PriceMeasurementStatus>
-      <ProductToggle />
+      <ProductToggle
+        productId={id}
+        priceId={priceId}
+        name={name}
+        price={price}
+        size={size}
+        measurement={measurement}
+      />
     </ProductWrapper>
   );
 };
 
 Product.propTypes = {
   id: string.isRequired,
+  priceId: string.isRequired,
   name: string.isRequired,
   status: string.isRequired,
   price: number.isRequired,

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { bool, func } from 'prop-types';
 import { faBars, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Logo from '../Logo/Logo';
+import { BasketContext } from '../../context/BasketContext';
 
 const ToolbarWrapper = styled.div`
   display: flex;
@@ -18,18 +19,18 @@ const ToolbarWrapper = styled.div`
   position: fixed;
   z-index: 1500;
 
+  div {
+    margin-right: 30px;
+    margin-left: 30px;
+  }
+
   svg {
     cursor: pointer;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 25px;
+    margin-right: 25px;
 
     &:hover {
       transform: scale(1.3);
-    }
-
-    @media (min-width: 758px) {
-      margin-left: 20px;
-      margin-right: 20px;
     }
   }
 
@@ -37,14 +38,18 @@ const ToolbarWrapper = styled.div`
     height: 80px;
     font-size: 20px;
 
-    img {
-      display: flex;
+    div {
+      margin-right: 60px;
+      margin-left: 30px;
     }
   }
 `;
 
 const Toolbar = (props) => {
   const { basketOpen, clickBasket, clickMenu, menuOpen } = props;
+  const { items } = useContext(BasketContext);
+
+  const total = items.reduce((prev, next) => prev + next.count, 0);
 
   return (
     <ToolbarWrapper>
@@ -55,12 +60,21 @@ const Toolbar = (props) => {
         onClick={() => clickMenu(!menuOpen)}
       />
       <Logo />
-      <FontAwesomeIcon
-        color={basketOpen ? '#f1943c' : '#ffffff'}
-        icon={faShoppingBasket}
-        size="2x"
-        onClick={() => clickBasket(!basketOpen)}
-      />
+      <div>
+        <span className="fa-layers">
+          <FontAwesomeIcon
+            color={basketOpen ? '#f1943c' : '#ffffff'}
+            icon={faShoppingBasket}
+            size="2x"
+            onClick={() => clickBasket(!basketOpen)}
+          />
+          {total > 0 ? (
+            <span className="fa-layers-counter fa-layers-top-right fa-3x">
+              {total}
+            </span>
+          ) : null}
+        </span>
+      </div>
     </ToolbarWrapper>
   );
 };

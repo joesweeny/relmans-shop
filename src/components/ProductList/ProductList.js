@@ -29,6 +29,7 @@ const ProductList = (props) => {
           return (
             <Product
               id={p.id}
+              priceId={pr.id}
               name={p.name}
               status={p.status}
               price={pr.value}
