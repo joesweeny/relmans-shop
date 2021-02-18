@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { number, string } from 'prop-types';
 
+import ProductToggle from './ProductToggle/ProductToggle';
 import displayMeasurement from '../../utility/measurement';
 import image from '../../assets/fruitandveg.jpg';
 
@@ -13,6 +14,7 @@ const ProductWrapper = styled.div`
   margin: 10px 5px 5px 5px;
   font-size: 12px;
   width: 150px;
+  border-radius: 0 0 10px 10px;
 
   img {
     width: 150px;
@@ -116,6 +118,7 @@ const Product = (props) => {
         </PriceMeasurement>
         <Status status={status}>{status.replace(/[_-]/g, ' ')}</Status>
       </PriceMeasurementStatus>
+      <ProductToggle />
     </ProductWrapper>
   );
 };
