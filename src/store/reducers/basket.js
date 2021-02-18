@@ -56,7 +56,7 @@ const reducer = (state, action) => {
     case actionTypes.RESTORE_BASKET:
       return restoreBasket(state, action);
     case actionTypes.EMPTY_BASKET:
-      return {};
+      return { items: [] };
     case actionTypes.ADD_BASKET_ITEM:
       return addItem(state, action);
     case actionTypes.REMOVE_BASKET_ITEM:
