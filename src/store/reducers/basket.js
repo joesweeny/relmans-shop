@@ -1,12 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
 
-const restoreBasket = (state, action) => {
-  return {
-    ...state,
-    items: action.items,
-  };
-};
-
 const addItem = (state, action) => {
   const item = state.items.find((i) => i.priceId === action.priceId);
   const items = state.items.filter((i) => i.priceId !== action.priceId);
@@ -53,8 +46,6 @@ const removeItem = (state, action) => {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case actionTypes.RESTORE_BASKET:
-      return restoreBasket(state, action);
     case actionTypes.EMPTY_BASKET:
       return { items: [] };
     case actionTypes.ADD_BASKET_ITEM:
