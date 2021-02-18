@@ -13,6 +13,10 @@ const ProductListWrapper = styled.div`
   justify-content: space-between;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
+
+  @media (min-width: 1025px) {
+    width: 80%;
+  }
 `;
 
 const ProductList = (props) => {
