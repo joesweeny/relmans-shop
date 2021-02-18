@@ -17,11 +17,22 @@ const ProductWrapper = styled.div`
   border-radius: 0 0 10px 10px;
 
   img {
-    width: 150px;
+    width: 175px;
     height: 125px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 959px) {
+    margin: 15px 5px 5px 5px;
+    font-size: 16px;
+    width: 250px;
+
+    img {
+      width: 250px;
+      height: 200px;
+    }
+  }
+
+  @media (min-width: 1025px) {
     margin: 25px 5px 5px 5px;
     font-size: 16px;
     width: 300px;
@@ -50,7 +61,7 @@ const PriceMeasurementStatus = styled.div`
   flex-direction: column;
   width: 100%;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     -webkit-flex-direction: row;
     flex-direction: row;
     -webkit-justify-content: space-between;
