@@ -13,6 +13,11 @@ const CategoryWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding: 10px;
+  margin: 0 0 20px 0;
+
+  @media (min-width: 1024px) {
+    padding: 20px 50px 20px 50px;
+  }
 `;
 
 const Category = () => {
@@ -37,6 +42,7 @@ const Category = () => {
   return (
     <CategoryWrapper>
       <Loader loading={loading}>
+        {error ?? null}
         <ProductList products={products} />
       </Loader>
     </CategoryWrapper>

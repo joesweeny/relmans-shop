@@ -9,14 +9,25 @@ const ProductWrapper = styled.div`
   display: -ms-flexbox;
   display: flex;
   flex-direction: column;
-  margin: 10px 5px 5px 5px;
   box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.23);
+  margin: 10px 5px 5px 5px;
   font-size: 12px;
   width: 150px;
 
   img {
     width: 150px;
     height: 125px;
+  }
+
+  @media (min-width: 1024px) {
+    margin: 25px 5px 5px 5px;
+    font-size: 16px;
+    width: 300px;
+
+    img {
+      width: 300px;
+      height: 250px;
+    }
   }
 `;
 
@@ -30,6 +41,21 @@ const Title = styled.p`
   border-radius: 10px 10px 0 0;
 `;
 
+const PriceMeasurementStatus = styled.div`
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+  }
+`;
+
 const PriceMeasurement = styled.div`
   display: -ms-flexbox;
   display: flex;
@@ -40,6 +66,7 @@ const PriceMeasurement = styled.div`
   align-items: center;
   border-top: 1px solid #cecbcbee;
   background-color: #ffffff;
+  width: 100%;
 `;
 
 const Price = styled.span`
@@ -47,12 +74,21 @@ const Price = styled.span`
   color: #3d604c;
   font-weight: 600;
   font-size: 20px;
+
+  @media (min-width: 1024px) {
+    font-size: 26px;
+    padding: 10px;
+  }
 `;
 
 const Measurement = styled.span`
   color: black;
   font-weight: 600;
   font-size: 10px;
+
+  @media (min-width: 1024px) {
+    font-size: 14px;
+  }
 `;
 
 const Status = styled.div`
@@ -60,6 +96,10 @@ const Status = styled.div`
   background-color: #ffffff;
   color: ${(props) => (props.status === 'IN_STOCK' ? 'green' : 'red')};
   font-weight: 600;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const Product = (props) => {
@@ -69,11 +109,13 @@ const Product = (props) => {
     <ProductWrapper>
       <Title>{name}</Title>
       <img src={image} alt={name} />
-      <PriceMeasurement>
-        <Price>£ {(price / 100).toFixed(2)}</Price>
-        <Measurement>/ {displayMeasurement(measurement, size)}</Measurement>
-      </PriceMeasurement>
-      <Status status={status}>{status.replace(/[_-]/g, ' ')}</Status>
+      <PriceMeasurementStatus>
+        <PriceMeasurement>
+          <Price>£ {(price / 100).toFixed(2)}</Price>
+          <Measurement>/ {displayMeasurement(measurement, size)}</Measurement>
+        </PriceMeasurement>
+        <Status status={status}>{status.replace(/[_-]/g, ' ')}</Status>
+      </PriceMeasurementStatus>
     </ProductWrapper>
   );
 };
