@@ -1,8 +1,8 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const addItem = (state, action) => {
-  const item = state.items.find((i) => i.priceId === action.priceId);
-  const items = state.items.filter((i) => i.priceId !== action.priceId);
+  const item = state.find((i) => i.priceId === action.priceId) || null;
+  const items = state.filter((i) => i.priceId !== action.priceId);
 
   const newItem = {
     priceId: action.priceId,
@@ -10,23 +10,19 @@ const addItem = (state, action) => {
     name: action.name,
     size: action.size,
     measurement: action.measurement,
-    price: items === null ? action.price : (item.price += action.price),
+    price: item === null ? action.price : (item.price += action.price),
     count: item === null ? 1 : (item.count += 1),
   };
 
-  return {
-    items: [...items, newItem],
-  };
+  return [...items, newItem];
 };
 
 const removeItem = (state, action) => {
-  const item = state.items.find((i) => i.priceId === action.priceId);
-  const items = state.items.filter((i) => i.priceId !== action.priceId);
+  const item = state.find((i) => i.priceId === action.priceId) || null;
+  const items = state.filter((i) => i.priceId !== action.priceId);
 
-  if (item.count === 1) {
-    return {
-      items: [...items],
-    };
+  if (item === null || item.count === 1) {
+    return [...items];
   }
 
   const newItem = {
@@ -39,9 +35,7 @@ const removeItem = (state, action) => {
     count: (item.count -= 1),
   };
 
-  return {
-    items: [...items, newItem],
-  };
+  return [...items, newItem];
 };
 
 const reducer = (state, action) => {

@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { number, string } from 'prop-types';
 import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { BasketContext } from '../../../context/BasketContext';
+import { addItem, removeItem } from '../../../store/actions/basket';
 
 const ProductToggleWrapper = styled.div`
   display: -ms-flexbox;
@@ -37,16 +41,27 @@ const ProductToggleWrapper = styled.div`
   }
 `;
 
-const ProductToggle = () => {
+const ProductToggle = (props) => {
+  const { productId, priceId, name, price, size, measurement } = props;
+  const { items, dispatch } = useContext(BasketContext);
   const [count, setCount] = useState(0);
 
+  useEffect(() => {
+    const c = items.find((obj) => obj.priceId === priceId) || null;
+
+    setCount(c !== null ? c.count : 0);
+  }, [items, priceId]);
+
+  const add = () => {
+    dispatch(addItem(priceId, productId, name, size, measurement, price));
+  };
+
   const remove = () => {
-    if (count <= 1) {
-      setCount(0);
+    if (count === 0) {
       return;
     }
 
-    setCount((prev) => prev - 1);
+    dispatch(removeItem(priceId, price));
   };
 
   return (
@@ -57,13 +72,18 @@ const ProductToggle = () => {
         onClick={() => remove()}
       />
       <p>{count === 0 ? null : count}</p>
-      <FontAwesomeIcon
-        icon={faPlusCircle}
-        size="2x"
-        onClick={() => setCount((prev) => prev + 1)}
-      />
+      <FontAwesomeIcon icon={faPlusCircle} size="2x" onClick={() => add()} />
     </ProductToggleWrapper>
   );
+};
+
+ProductToggle.propTypes = {
+  productId: string.isRequired,
+  priceId: string.isRequired,
+  name: string.isRequired,
+  price: number.isRequired,
+  size: number.isRequired,
+  measurement: string.isRequired,
 };
 
 export default ProductToggle;

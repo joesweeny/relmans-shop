@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { bool } from 'prop-types';
 import styled from 'styled-components';
+
+import { BasketContext } from '../../context/BasketContext';
 
 const BasketMenuWrapper = styled.div`
   display: ${(props) => (props.open ? '-ms-flexbox' : 'none')};
@@ -26,9 +28,16 @@ const BasketMenuWrapper = styled.div`
 
 const BasketMenu = (props) => {
   const { open } = props;
+  const { items } = useContext(BasketContext);
+
+  const total = items.reduce((prev, next) => prev + next.count, 0);
 
   return (
-    <BasketMenuWrapper open={open}>Your basket is empty</BasketMenuWrapper>
+    <BasketMenuWrapper open={open}>
+      {total > 0
+        ? `You have ${total} items in your basket`
+        : 'Your basket is empty'}
+    </BasketMenuWrapper>
   );
 };
 

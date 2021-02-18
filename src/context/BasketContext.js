@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useMemo, useReducer } from 'react';
+import React, { createContext, useEffect, useReducer } from 'react';
 import { node } from 'prop-types';
 
 import reducer from '../store/reducers/basket';
@@ -13,19 +13,14 @@ const BasketContextProvider = (props) => {
     (initial) => JSON.parse(localStorage.getItem('relmansshop')) || initial
   );
 
-  console.log(items);
-
   useEffect(() => {
     localStorage.setItem('relmansshop', JSON.stringify(items));
   }, [items]);
 
-  const store = useMemo(
-    () => ({
-      items,
-      dispatch,
-    }),
-    []
-  );
+  const store = {
+    items,
+    dispatch,
+  };
 
   return (
     <BasketContext.Provider value={store}>{children}</BasketContext.Provider>
