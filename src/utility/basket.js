@@ -1,7 +1,7 @@
-const addSortItem = (products, newProduct) => {
-  const newProducts = [...products, newProduct];
+const addSortItem = (items, item) => {
+  const newItems = [...items, item];
 
-  return newProducts.sort((a, b) => a.name.localeCompare(b.name));
+  return newItems.sort((a, b) => a.name.localeCompare(b.name));
 };
 
 export default addSortItem;
