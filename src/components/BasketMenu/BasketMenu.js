@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { bool } from 'prop-types';
 import styled from 'styled-components';
 
+import BasketItem from '../BasketItem/BasketItem';
 import { BasketContext } from '../../context/BasketContext';
 
 const BasketMenuWrapper = styled.div`
@@ -16,27 +17,45 @@ const BasketMenuWrapper = styled.div`
   transition: transform 300ms;
   right: 0;
   z-index: 1001;
+  overflow-y: auto;
 
   @media (min-width: 756px) {
     width: 50vw;
   }
 
   @media (min-width: 1024px) {
-    width: 350px;
+    position: relative;
+    width: 450px;
   }
 `;
 
 const BasketMenu = (props) => {
   const { open } = props;
   const { items } = useContext(BasketContext);
+  const [basket, setBasket] = useState([]);
 
-  const total = items.reduce((prev, next) => prev + next.count, 0);
+  useEffect(() => {
+    setBasket(items);
+  }, [items, setBasket]);
+
+  const total = basket.reduce((prev, next) => prev + next.count, 0);
 
   return (
     <BasketMenuWrapper open={open}>
-      {total > 0
-        ? `You have ${total} items in your basket`
-        : 'Your basket is empty'}
+      {basket.map((i) => {
+        return (
+          <BasketItem
+            productId={i.productId}
+            priceId={i.priceId}
+            count={i.count}
+            name={i.name}
+            price={i.price}
+            size={i.size}
+            measurement={i.measurement}
+            key={i.priceId}
+          />
+        );
+      })}
     </BasketMenuWrapper>
   );
 };
