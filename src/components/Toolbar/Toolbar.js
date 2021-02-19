@@ -20,8 +20,8 @@ const ToolbarWrapper = styled.div`
   z-index: 1500;
 
   div {
-    margin-right: 30px;
-    margin-left: 30px;
+    margin-right: 40px;
+    margin-left: 20px;
   }
 
   svg {
@@ -41,6 +41,10 @@ const ToolbarWrapper = styled.div`
     div {
       margin-right: 60px;
       margin-left: 30px;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 `;
@@ -60,13 +64,17 @@ const Toolbar = (props) => {
         onClick={() => clickMenu(!menuOpen)}
       />
       <Logo />
-      <div>
+      <div
+        onClick={() => clickBasket(!basketOpen)}
+        onKeyDown={() => clickBasket(!basketOpen)}
+        role="button"
+        tabIndex={0}
+      >
         <span className="fa-layers">
           <FontAwesomeIcon
             color={basketOpen ? '#f1943c' : '#ffffff'}
             icon={faShoppingBasket}
             size="2x"
-            onClick={() => clickBasket(!basketOpen)}
           />
           {total > 0 ? (
             <span className="fa-layers-counter fa-layers-top-right fa-3x">
