@@ -11,13 +11,14 @@ const CategoryMenuWrapper = styled.div`
   display: ${(props) => (props.open ? 'flex' : 'none')};
   justify-content: flex-start;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
   position: fixed;
   width: 100vw;
   background-color: #3d604c;
   transition: transform 300ms;
   left: 0;
   z-index: 1000;
+  overflow-y: auto;
 
   @media (min-width: 756px) {
     width: 30vw;
