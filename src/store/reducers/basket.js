@@ -6,7 +6,7 @@ const addItem = (state, action) => {
 
   const newItem = {
     priceId: action.priceId,
-    produceId: action.productId,
+    productId: action.productId,
     name: action.name,
     size: action.size,
     measurement: action.measurement,
@@ -27,7 +27,7 @@ const removeItem = (state, action) => {
 
   const newItem = {
     priceId: action.priceId,
-    produceId: action.productId,
+    productId: action.productId,
     name: action.name,
     size: action.size,
     measurement: action.measurement,
