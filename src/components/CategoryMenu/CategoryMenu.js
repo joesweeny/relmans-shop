@@ -43,7 +43,7 @@ const CategoryMenu = (props) => {
               id={c.id}
               name={c.name}
               key={c.id}
-              click={click}
+              click={() => click(false)}
             />
           );
         })}

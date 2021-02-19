@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { bool } from 'prop-types';
+import { bool, func } from 'prop-types';
 import styled from 'styled-components';
 
+import CheckoutButton from './CheckoutButton/CheckoutButton';
 import BasketItem from '../BasketItem/BasketItem';
-import BasketMenuHeader from './BasketMenuHeader/BasketMenuHeader';
 import { BasketContext } from '../../context/BasketContext';
 
 const BasketMenuWrapper = styled.div`
@@ -31,7 +31,7 @@ const BasketMenuWrapper = styled.div`
 `;
 
 const BasketMenu = (props) => {
-  const { open } = props;
+  const { open, clickBasket } = props;
   const { items } = useContext(BasketContext);
   const [basket, setBasket] = useState([]);
 
@@ -41,7 +41,7 @@ const BasketMenu = (props) => {
 
   return (
     <BasketMenuWrapper open={open}>
-      <BasketMenuHeader />
+      <CheckoutButton click={clickBasket} />
       {basket.map((i) => {
         return (
           <BasketItem
@@ -63,6 +63,7 @@ const BasketMenu = (props) => {
 
 BasketMenu.propTypes = {
   open: bool.isRequired,
+  clickBasket: func.isRequired,
 };
 
 export default BasketMenu;

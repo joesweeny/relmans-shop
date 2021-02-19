@@ -21,14 +21,14 @@ const DashboardWrapper = styled.div`
 `;
 
 const Dashboard = (props) => {
-  const { basketOpen, menuOpen, clickMenu } = props;
+  const { basketOpen, menuOpen, clickMenu, clickBasket } = props;
 
   return (
     <ProductContextProvider>
       <DashboardWrapper>
         <CategoryMenu open={menuOpen} click={clickMenu} />
         <Routes />
-        <BasketMenu open={basketOpen} />
+        <BasketMenu open={basketOpen} clickBasket={clickBasket} />
       </DashboardWrapper>
     </ProductContextProvider>
   );
@@ -38,6 +38,7 @@ Dashboard.propTypes = {
   basketOpen: bool.isRequired,
   menuOpen: bool.isRequired,
   clickMenu: func.isRequired,
+  clickBasket: func.isRequired,
 };
 
 export default Dashboard;
