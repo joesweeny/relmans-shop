@@ -3,6 +3,7 @@ import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Category from '../Category/Category';
+import Checkout from '../Checkout/Checkout';
 import Home from '../Home/Home';
 
 const RoutesWrapper = styled.div`
@@ -20,6 +21,7 @@ const Routes = () => {
     <RoutesWrapper>
       <Switch>
         <Route path="/category/:id" component={Category} />
+        <Route path="/checkout" component={Checkout} />
         <Route path="/" component={Home} />
         <Redirect to="/" />
       </Switch>

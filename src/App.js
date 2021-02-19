@@ -32,7 +32,8 @@ const App = () => {
             <Dashboard
               basketOpen={basketOpen}
               menuOpen={menuOpen}
-              clickMenu={() => setMenuOpen(false)}
+              clickMenu={setMenuOpen}
+              clickBasket={setBasketOpen}
             />
           </BrowserRouter>
         </Container>
