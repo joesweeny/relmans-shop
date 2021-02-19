@@ -18,7 +18,7 @@ const CategoryMenuWrapper = styled.div`
   transition: transform 300ms;
   left: 0;
   z-index: 1000;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   @media (min-width: 756px) {
     width: 30vw;

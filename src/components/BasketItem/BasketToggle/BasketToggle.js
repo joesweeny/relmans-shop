@@ -66,7 +66,7 @@ const BasketToggle = (props) => {
       <Button onClick={() => add()}>
         <FontAwesomeIcon icon={faPlus} size="1x" />
       </Button>
-      <span>{count === 0 ? null : count}</span>
+      <span>{count}</span>
       <Button onClick={() => remove()}>
         <FontAwesomeIcon icon={faMinus} size="1x" />
       </Button>
