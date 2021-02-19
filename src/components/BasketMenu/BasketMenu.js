@@ -3,6 +3,7 @@ import { bool } from 'prop-types';
 import styled from 'styled-components';
 
 import BasketItem from '../BasketItem/BasketItem';
+import BasketMenuHeader from './BasketMenuHeader/BasketMenuHeader';
 import { BasketContext } from '../../context/BasketContext';
 
 const BasketMenuWrapper = styled.div`
@@ -40,6 +41,7 @@ const BasketMenu = (props) => {
 
   return (
     <BasketMenuWrapper open={open}>
+      <BasketMenuHeader />
       {basket.map((i) => {
         return (
           <BasketItem
