@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
+import addSortItem from '../../utility/basket';
 
 const addItem = (state, action) => {
   const item = state.find((i) => i.priceId === action.priceId) || null;
@@ -10,11 +11,12 @@ const addItem = (state, action) => {
     name: action.name,
     size: action.size,
     measurement: action.measurement,
-    price: item === null ? action.price : (item.price += action.price),
+    price: action.price,
+    total: item === null ? action.price : (item.total += action.price),
     count: item === null ? 1 : (item.count += 1),
   };
 
-  return [...items, newItem];
+  return addSortItem(items, newItem);
 };
 
 const removeItem = (state, action) => {
@@ -26,16 +28,12 @@ const removeItem = (state, action) => {
   }
 
   const newItem = {
-    priceId: action.priceId,
-    productId: action.productId,
-    name: action.name,
-    size: action.size,
-    measurement: action.measurement,
-    price: items === null ? action.price : (item.price -= action.price),
+    ...item,
+    total: (item.total -= item.price),
     count: (item.count -= 1),
   };
 
-  return [...items, newItem];
+  return addSortItem(items, newItem);
 };
 
 const reducer = (state, action) => {

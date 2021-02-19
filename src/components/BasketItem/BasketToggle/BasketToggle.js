@@ -50,7 +50,6 @@ const BasketToggle = (props) => {
 
   useEffect(() => {
     const c = items.find((obj) => obj.priceId === priceId) || null;
-
     setCount(c !== null ? c.count : 0);
   }, [items, priceId]);
 
@@ -59,21 +58,17 @@ const BasketToggle = (props) => {
   };
 
   const remove = () => {
-    if (count === 0) {
-      return;
-    }
-
     dispatch(removeItem(priceId, price));
   };
 
   return (
     <BasketToggleWrapper count={count}>
-      <Button>
-        <FontAwesomeIcon icon={faPlus} size="1x" onClick={() => add()} />
+      <Button onClick={() => add()}>
+        <FontAwesomeIcon icon={faPlus} size="1x" />
       </Button>
       <span>{count === 0 ? null : count}</span>
-      <Button>
-        <FontAwesomeIcon icon={faMinus} size="1x" onClick={() => remove()} />
+      <Button onClick={() => remove()}>
+        <FontAwesomeIcon icon={faMinus} size="1x" />
       </Button>
     </BasketToggleWrapper>
   );

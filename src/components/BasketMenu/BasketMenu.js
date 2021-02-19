@@ -38,8 +38,6 @@ const BasketMenu = (props) => {
     setBasket(items);
   }, [items, setBasket]);
 
-  const total = basket.reduce((prev, next) => prev + next.count, 0);
-
   return (
     <BasketMenuWrapper open={open}>
       {basket.map((i) => {
@@ -52,6 +50,7 @@ const BasketMenu = (props) => {
             price={i.price}
             size={i.size}
             measurement={i.measurement}
+            total={i.total}
             key={i.priceId}
           />
         );

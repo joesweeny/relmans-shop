@@ -32,7 +32,7 @@ const Total = styled.p`
 `;
 
 const BasketItem = (props) => {
-  const { count, name, price, priceId, productId, size, measurement } = props;
+  const { name, price, priceId, productId, size, measurement, total } = props;
 
   return (
     <BasketItemWrapper>
@@ -43,7 +43,7 @@ const BasketItem = (props) => {
         measurement={measurement}
         size={size}
       />
-      <Total>£ {(price / 100).toFixed(2)}</Total>
+      <Total>£ {(total / 100).toFixed(2)}</Total>
       <BasketToggle
         productId={productId}
         priceId={priceId}
@@ -59,11 +59,11 @@ const BasketItem = (props) => {
 BasketItem.propTypes = {
   productId: string.isRequired,
   priceId: string.isRequired,
-  count: number.isRequired,
   name: string.isRequired,
   price: number.isRequired,
   size: number.isRequired,
   measurement: string.isRequired,
+  total: number.isRequired,
 };
 
 export default BasketItem;
