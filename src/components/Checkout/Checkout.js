@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import CheckoutContextProvider from '../../context/CheckoutContext';
 import CheckoutDelivery from './CheckoutDelivery/CheckoutDelivery';
 import OrderSummary from './OrderSummary/OrderSummary';
 
@@ -19,10 +20,12 @@ const CheckoutWrapper = styled.div`
 
 const Checkout = () => {
   return (
-    <CheckoutWrapper>
-      <CheckoutDelivery />
-      <OrderSummary />
-    </CheckoutWrapper>
+    <CheckoutContextProvider>
+      <CheckoutWrapper>
+        <CheckoutDelivery />
+        <OrderSummary />
+      </CheckoutWrapper>
+    </CheckoutContextProvider>
   );
 };
 
