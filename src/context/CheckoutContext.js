@@ -9,7 +9,6 @@ const CheckoutContextProvider = (props) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [address, setAddress] = useState({});
-  const [postCode, setPostCode] = useState(null);
   const [phone, setPhone] = useState(null);
   const [method, setMethod] = useState(null);
   const [date, setDate] = useState(null);
@@ -22,9 +21,8 @@ const CheckoutContextProvider = (props) => {
       lastName,
       method,
       phone,
-      postCode,
     }),
-    [address, date, firstName, lastName, method, phone, postCode]
+    [address, date, firstName, lastName, method, phone]
   );
 
   const actions = useMemo(
@@ -34,18 +32,9 @@ const CheckoutContextProvider = (props) => {
       setFirstName,
       setLastName,
       setMethod,
-      setPostCode,
       setPhone,
     }),
-    [
-      setAddress,
-      setDate,
-      setFirstName,
-      setLastName,
-      setMethod,
-      setPostCode,
-      setPhone,
-    ]
+    [setAddress, setDate, setFirstName, setLastName, setMethod, setPhone]
   );
 
   return (
