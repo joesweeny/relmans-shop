@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import BasketContextProvider from './context/BasketContext';
 import CategoryContextProvider from './context/CategoryContext';
+import CheckoutContextProvider from './context/CheckoutContext';
 import Dashboard from './components/Dashboard/Dashboard';
 import Toolbar from './components/Toolbar/Toolbar';
 
@@ -21,22 +22,24 @@ const App = () => {
   return (
     <CategoryContextProvider>
       <BasketContextProvider>
-        <Container>
-          <BrowserRouter>
-            <Toolbar
-              basketOpen={basketOpen}
-              menuOpen={menuOpen}
-              clickBasket={setBasketOpen}
-              clickMenu={setMenuOpen}
-            />
-            <Dashboard
-              basketOpen={basketOpen}
-              menuOpen={menuOpen}
-              clickMenu={setMenuOpen}
-              clickBasket={setBasketOpen}
-            />
-          </BrowserRouter>
-        </Container>
+        <CheckoutContextProvider>
+          <Container>
+            <BrowserRouter>
+              <Toolbar
+                basketOpen={basketOpen}
+                menuOpen={menuOpen}
+                clickBasket={setBasketOpen}
+                clickMenu={setMenuOpen}
+              />
+              <Dashboard
+                basketOpen={basketOpen}
+                menuOpen={menuOpen}
+                clickMenu={setMenuOpen}
+                clickBasket={setBasketOpen}
+              />
+            </BrowserRouter>
+          </Container>
+        </CheckoutContextProvider>
       </BasketContextProvider>
     </CategoryContextProvider>
   );

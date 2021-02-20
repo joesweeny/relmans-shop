@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import CheckoutDate from './CheckoutDate/CheckoutDate';
 import CheckoutMethod from './CheckoutMethod/CheckoutMethod';
 import DeliveryInfo from './DeliveryInfo';
+import {
+  CheckoutContext,
+  CheckoutActionContext,
+} from '../../../context/CheckoutContext';
 
 const CheckoutDeliveryWrapper = styled.div`
   display: -ms-flexbox;
@@ -48,8 +52,8 @@ const Continue = styled.p`
 `;
 
 const CheckoutDelivery = () => {
-  const [method, setMethod] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(null);
+  const { date, method } = useContext(CheckoutContext);
+  const { setDate, setMethod } = useContext(CheckoutActionContext);
 
   return (
     <CheckoutDeliveryWrapper>
@@ -68,11 +72,11 @@ const CheckoutDelivery = () => {
       {method ? (
         <CheckoutDate
           isCollection={method === 'Collection'}
-          selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
+          selectedDate={date}
+          setSelectedDate={setDate}
         />
       ) : null}
-      {selectedDate ? <Continue>Continue</Continue> : null}
+      {date ? <Continue>Continue</Continue> : null}
     </CheckoutDeliveryWrapper>
   );
 };
