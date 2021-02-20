@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { bool, func } from 'prop-types';
 import styled from 'styled-components';
 
-import CheckoutButton from './CheckoutButton/CheckoutButton';
 import BasketItem from '../BasketItem/BasketItem';
+import CheckoutButton from './CheckoutButton/CheckoutButton';
+import ClearBasketButton from './ClearBasketButton/ClearBasketButton';
 import { BasketContext } from '../../context/BasketContext';
 
 const BasketMenuWrapper = styled.div`
@@ -11,6 +12,7 @@ const BasketMenuWrapper = styled.div`
   display: ${(props) => (props.open ? 'flex' : 'none')};
   justify-content: flex-start;
   flex-direction: column;
+  align-items: center;
   height: 100%;
   position: fixed;
   width: 100vw;
@@ -39,6 +41,12 @@ const BasketMenu = (props) => {
     setBasket(items);
   }, [items, setBasket]);
 
+  if (basket.length === 0) {
+    return (
+      <BasketMenuWrapper open={open}>Your basket is empty</BasketMenuWrapper>
+    );
+  }
+
   return (
     <BasketMenuWrapper open={open}>
       <CheckoutButton click={clickBasket} />
@@ -57,6 +65,7 @@ const BasketMenu = (props) => {
           />
         );
       })}
+      <ClearBasketButton />
     </BasketMenuWrapper>
   );
 };

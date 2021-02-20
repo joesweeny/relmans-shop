@@ -11,18 +11,19 @@ const CheckoutButtonWrapper = styled(NavLink)`
   flex-direction: row;
   justify-content: center;
   font-size: 18px;
-  background-color: white;
+  background-color: #f1943c;
   align-items: center;
   cursor: pointer;
   padding: 10px;
   text-transform: uppercase;
-  color: #3d604c;
+  color: #291212;
   font-weight: 600;
   border-bottom: 1px solid #cecbcbee;
   text-decoration: none;
+  width: 100%;
 
   &:hover {
-    color: #f1943c;
+    background-color: green;
   }
 `;
 
