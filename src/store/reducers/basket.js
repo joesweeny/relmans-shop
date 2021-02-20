@@ -39,7 +39,7 @@ const removeItem = (state, action) => {
 const reducer = (state, action) => {
   switch (action.type) {
     case actionTypes.EMPTY_BASKET:
-      return { items: [] };
+      return [];
     case actionTypes.ADD_BASKET_ITEM:
       return addItem(state, action);
     case actionTypes.REMOVE_BASKET_ITEM:
