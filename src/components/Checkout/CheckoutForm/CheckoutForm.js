@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import CheckoutDelivery from '../CheckoutDelivery/CheckoutDelivery';
+import CheckoutCustomerForm from '../CheckoutCustomerForm/CheckoutCustomerForm';
+import CheckoutPayment from '../CheckoutPayment/CheckoutPayment';
 
 const CheckoutFormWrapper = styled.div`
   display: -ms-flexbox;
@@ -28,7 +30,10 @@ const CheckoutForm = () => {
       component = <CheckoutDelivery nextStep={setStep} />;
       break;
     case 2:
-      component = <p>Hello</p>;
+      component = <CheckoutCustomerForm nextStep={setStep} />;
+      break;
+    case 3:
+      component = <CheckoutPayment />;
       break;
     default:
       component = null;

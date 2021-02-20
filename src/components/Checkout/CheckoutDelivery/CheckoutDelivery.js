@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { func } from 'prop-types';
 
+import CheckoutButton from '../CheckoutButton/CheckoutButton';
 import CheckoutDate from './CheckoutDate/CheckoutDate';
 import CheckoutMethod from './CheckoutMethod/CheckoutMethod';
+import CheckoutTitle from '../CheckoutTitle/CheckoutTitle';
 import DeliveryInfo from './DeliveryInfo';
 import {
   CheckoutContext,
@@ -23,33 +25,6 @@ const CheckoutDeliveryWrapper = styled.div`
   }
 `;
 
-const Title = styled.p`
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #eeeeee;
-  text-transform: uppercase;
-  padding: 10px;
-  color: #3d604c;
-  font-weight: 600;
-  font-size: 14px;
-`;
-
-const Continue = styled.p`
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f1943c;
-  text-transform: uppercase;
-  padding: 10px;
-  color: #291212;
-  font-weight: 600;
-  font-size: 18px;
-  cursor: pointer;
-`;
-
 const CheckoutDelivery = (props) => {
   const { nextStep } = props;
   const { date, method } = useContext(CheckoutContext);
@@ -57,7 +32,7 @@ const CheckoutDelivery = (props) => {
 
   return (
     <CheckoutDeliveryWrapper>
-      <Title>Select a delivery option</Title>
+      <CheckoutTitle>Select a delivery option</CheckoutTitle>
       <CheckoutMethod
         select={() => setMethod('Collection')}
         selectedMethod={method}
@@ -76,7 +51,11 @@ const CheckoutDelivery = (props) => {
           setSelectedDate={setDate}
         />
       ) : null}
-      {date ? <Continue onClick={() => nextStep(2)}>Continue</Continue> : null}
+      {date ? (
+        <CheckoutButton click={() => nextStep(2)} color="#f1943c" size="18px">
+          Proceed to contact details
+        </CheckoutButton>
+      ) : null}
     </CheckoutDeliveryWrapper>
   );
 };
