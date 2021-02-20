@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import CheckoutForm from './CheckoutForm/CheckoutForm';
-import OrderSummary from './OrderSummary/OrderSummary';
 
 const CheckoutWrapper = styled.div`
   display: -ms-flexbox;
@@ -20,7 +19,6 @@ const Checkout = () => {
   return (
     <CheckoutWrapper>
       <CheckoutForm />
-      <OrderSummary />
     </CheckoutWrapper>
   );
 };
