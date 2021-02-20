@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { func } from 'prop-types';
 
 import CheckoutDate from './CheckoutDate/CheckoutDate';
 import CheckoutMethod from './CheckoutMethod/CheckoutMethod';
@@ -15,10 +16,8 @@ const CheckoutDeliveryWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
-  margin: 10px;
 
   @media (min-width: 1024px) {
-    width: 35%;
     box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.23);
     margin-bottom: auto;
   }
@@ -51,7 +50,8 @@ const Continue = styled.p`
   cursor: pointer;
 `;
 
-const CheckoutDelivery = () => {
+const CheckoutDelivery = (props) => {
+  const { nextStep } = props;
   const { date, method } = useContext(CheckoutContext);
   const { setDate, setMethod } = useContext(CheckoutActionContext);
 
@@ -76,9 +76,13 @@ const CheckoutDelivery = () => {
           setSelectedDate={setDate}
         />
       ) : null}
-      {date ? <Continue>Continue</Continue> : null}
+      {date ? <Continue onClick={() => nextStep(2)}>Continue</Continue> : null}
     </CheckoutDeliveryWrapper>
   );
+};
+
+CheckoutDelivery.propTypes = {
+  nextStep: func.isRequired,
 };
 
 export default CheckoutDelivery;
