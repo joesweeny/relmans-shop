@@ -6,23 +6,46 @@ export const CheckoutActionContext = createContext(null);
 
 const CheckoutContextProvider = (props) => {
   const { children } = props;
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [address, setAddress] = useState({});
+  const [postCode, setPostCode] = useState(null);
+  const [phone, setPhone] = useState(null);
   const [method, setMethod] = useState(null);
   const [date, setDate] = useState(null);
 
   const store = useMemo(
     () => ({
+      address,
       date,
+      firstName,
+      lastName,
       method,
+      phone,
+      postCode,
     }),
-    [date, method]
+    [address, date, firstName, lastName, method, phone, postCode]
   );
 
   const actions = useMemo(
     () => ({
+      setAddress,
       setDate,
+      setFirstName,
+      setLastName,
       setMethod,
+      setPostCode,
+      setPhone,
     }),
-    [setDate, setMethod]
+    [
+      setAddress,
+      setDate,
+      setFirstName,
+      setLastName,
+      setMethod,
+      setPostCode,
+      setPhone,
+    ]
   );
 
   return (

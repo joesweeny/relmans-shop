@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import CheckoutTitle from '../CheckoutTitle/CheckoutTitle';
 import BasketItem from '../../BasketItem/BasketItem';
 import { BasketContext } from '../../../context/BasketContext';
 
@@ -19,20 +20,6 @@ const OrderSummaryWrapper = styled.div`
   }
 `;
 
-const Title = styled.p`
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #eeeeee;
-  text-transform: uppercase;
-  padding: 10px;
-  color: #3d604c;
-  font-weight: 600;
-  font-size: 14px;
-  border-bottom: 1px solid #cecbcbee;
-`;
-
 const OrderSummary = () => {
   const { items } = useContext(BasketContext);
   const [basket, setBasket] = useState([]);
@@ -43,7 +30,7 @@ const OrderSummary = () => {
 
   return (
     <OrderSummaryWrapper>
-      <Title>Order Summary</Title>
+      <CheckoutTitle>Order Summary</CheckoutTitle>
       {basket.map((i) => {
         return (
           <BasketItem
