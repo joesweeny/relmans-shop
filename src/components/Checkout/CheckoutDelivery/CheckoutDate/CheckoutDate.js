@@ -31,6 +31,7 @@ const CheckoutDateWrapper = styled.div`
   }
 
   .react-datepicker__day--keyboard-selected,
+  .react-datepicker__time-list-item--selected,
   .react-datepicker__day--selected {
     background: green !important;
   }
