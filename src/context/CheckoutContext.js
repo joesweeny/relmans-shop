@@ -12,6 +12,7 @@ const CheckoutContextProvider = (props) => {
   const [phone, setPhone] = useState(null);
   const [method, setMethod] = useState(null);
   const [date, setDate] = useState(null);
+  const [orderId, setOrderId] = useState(null);
 
   const store = useMemo(
     () => ({
@@ -32,9 +33,18 @@ const CheckoutContextProvider = (props) => {
       setFirstName,
       setLastName,
       setMethod,
+      setOrderId,
       setPhone,
     }),
-    [setAddress, setDate, setFirstName, setLastName, setMethod, setPhone]
+    [
+      setAddress,
+      setDate,
+      setFirstName,
+      setLastName,
+      setMethod,
+      setOrderId,
+      setPhone,
+    ]
   );
 
   return (

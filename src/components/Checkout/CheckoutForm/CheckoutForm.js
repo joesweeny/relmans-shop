@@ -33,7 +33,10 @@ const CheckoutForm = () => {
       component = <CheckoutCustomerForm nextStep={setStep} />;
       break;
     case 3:
-      component = <CheckoutPayment />;
+      component = <CheckoutPayment nextStep={setStep} />;
+      break;
+    case 4:
+      component = <p>You have made payment. Thank you</p>;
       break;
     default:
       component = null;
