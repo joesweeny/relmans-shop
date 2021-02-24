@@ -39,7 +39,7 @@ const CheckoutButton = (props) => {
 
   return (
     <CheckoutButtonWrapper to="/checkout" onClick={() => click(false)}>
-      Checkout £{(total / 100).toFixed(2)}
+      Go To Checkout £{(total / 100).toFixed(2)}
     </CheckoutButtonWrapper>
   );
 };
