@@ -42,7 +42,7 @@ const CheckoutSuccess = () => {
 
   useEffect(() => {
     dispatch(setOrderComplete());
-  });
+  }, [dispatch]);
 
   return (
     <CheckoutSuccessWrapper>
