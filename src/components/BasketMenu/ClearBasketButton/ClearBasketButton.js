@@ -4,7 +4,7 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { CheckoutContext } from '../../../context/CheckoutContext';
-import { emptyBasket } from '../../../store/actions/basket';
+import { emptyBasket } from '../../../store/actions/checkout';
 
 const ClearBasketButtonWrapper = styled.div`
   display: -ms-flexbox;

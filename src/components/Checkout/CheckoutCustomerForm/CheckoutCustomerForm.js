@@ -37,7 +37,7 @@ const CheckoutCustomerForm = (props) => {
         Back to delivery
       </CheckoutButton>
       <ContactForm />
-      {method.type === 'Delivery' ? <DeliveryAddress /> : null}
+      {method.type === 'DELIVERY' ? <DeliveryAddress /> : null}
       <CheckoutButton
         click={() => nextStep((prev) => prev + 1)}
         color="#f1943c"
