@@ -83,6 +83,30 @@ const setAddressField = (state, action) => {
   };
 };
 
+const resetState = (state, action) => {
+  return {
+    orderNumber: state.orderNumber,
+    items: [],
+    firstName: null,
+    lastName: null,
+    phone: null,
+    email: state.email,
+    address: {
+      line1: null,
+      line2: null,
+      line3: null,
+      town: null,
+      county: null,
+      postCode: null,
+    },
+    method: {
+      type: null,
+      date: null,
+      fee: 0,
+    },
+  };
+};
+
 const reducer = (state, action) => {
   switch (action.type) {
     case actionTypes.EMPTY_BASKET:
@@ -102,6 +126,8 @@ const reducer = (state, action) => {
       return setDeliveryField(state, action);
     case actionTypes.SET_ADDRESS_FIELD:
       return setAddressField(state, action);
+    case actionTypes.SET_ORDER_COMPLETE:
+      return resetState(state, action);
     default:
       return state;
   }

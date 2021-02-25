@@ -42,14 +42,14 @@ const ContactForm = () => {
           type="text"
           label="First Name*"
           width="95%"
-          value={firstName}
+          value={firstName ?? ''}
         />
         <CheckoutInput
           update={(v) => dispatch(setCustomerField('lastName', v))}
           type="text"
           label="Last Name*"
           width="95%"
-          value={lastName}
+          value={lastName ?? ''}
         />
       </Row>
       <Row>
@@ -57,15 +57,17 @@ const ContactForm = () => {
           update={(v) => dispatch(setCustomerField('phone', v))}
           type="text"
           label="Phone Number*"
-          width="95%"
-          value={phone}
+          width="97%"
+          value={phone ?? ''}
         />
+      </Row>
+      <Row>
         <CheckoutInput
           update={(v) => dispatch(setCustomerField('email', v))}
           type="email"
           label="Email Address*"
-          width="95%"
-          value={email}
+          width="97%"
+          value={email ?? ''}
         />
       </Row>
     </ContactFormWrapper>

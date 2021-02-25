@@ -60,6 +60,7 @@ const Loading = styled.div`
   p {
     padding: 10px;
     font-size: 16px;
+    text-align: center;
   }
 `;
 

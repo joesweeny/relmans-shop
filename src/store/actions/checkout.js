@@ -56,3 +56,7 @@ export const setAddressField = (key, value) => {
     value,
   };
 };
+
+export const setOrderComplete = () => {
+  return { type: actionTypes.SET_ORDER_COMPLETE };
+};
