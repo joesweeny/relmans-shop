@@ -16,15 +16,40 @@ const CheckoutCustomerFormWrapper = styled.div`
   width: 100%;
   background-color: #eeeeee;
 
+  span {
+    text-align: center;
+    padding-bottom: 5px;
+    font-size: 12px;
+    color: #3d604c;
+    font-weight: 600;
+  }
+
   @media (min-width: 1024px) {
     box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.23);
     margin-bottom: auto;
+
+    span {
+      padding-bottom: 10px;
+      font-size: 14px;
+    }
   }
 `;
 
 const CheckoutCustomerForm = (props) => {
   const { nextStep } = props;
-  const { method } = useContext(CheckoutContext);
+  const { method, firstName, lastName, phone, email, address } = useContext(
+    CheckoutContext
+  );
+
+  const isDisabled = () => {
+    const mainFields = !firstName || !lastName || !email || !phone;
+
+    if (method.type === 'COLLECTION') {
+      return mainFields;
+    }
+
+    return mainFields || !address.line1 || !address.postCode;
+  };
 
   return (
     <CheckoutCustomerFormWrapper>
@@ -36,15 +61,18 @@ const CheckoutCustomerForm = (props) => {
       >
         Back to delivery
       </CheckoutButton>
+      <span>Fields marked with a * need to be filled before proceeding</span>
       <ContactForm />
       {method.type === 'DELIVERY' ? <DeliveryAddress /> : null}
-      <CheckoutButton
-        click={() => nextStep((prev) => prev + 1)}
-        color="#f1943c"
-        size="18px"
-      >
-        Proceed to payment
-      </CheckoutButton>
+      {!isDisabled() ? (
+        <CheckoutButton
+          click={() => nextStep((prev) => prev + 1)}
+          color="#f1943c"
+          size="18px"
+        >
+          Proceed to payment
+        </CheckoutButton>
+      ) : null}
     </CheckoutCustomerFormWrapper>
   );
 };
