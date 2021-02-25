@@ -5,7 +5,7 @@ import { faBars, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Logo from '../Logo/Logo';
-import { BasketContext } from '../../context/BasketContext';
+import { CheckoutContext } from '../../context/CheckoutContext';
 
 const ToolbarWrapper = styled.div`
   display: flex;
@@ -51,7 +51,7 @@ const ToolbarWrapper = styled.div`
 
 const Toolbar = (props) => {
   const { basketOpen, clickBasket, clickMenu, menuOpen } = props;
-  const { items } = useContext(BasketContext);
+  const { items } = useContext(CheckoutContext);
 
   const total = items.reduce((prev, next) => prev + next.count, 0);
 

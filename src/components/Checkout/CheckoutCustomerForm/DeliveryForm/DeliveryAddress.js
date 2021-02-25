@@ -1,10 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-import {
-  CheckoutActionContext,
-  CheckoutContext,
-} from '../../../../context/CheckoutContext';
+import { CheckoutContext } from '../../../../context/CheckoutContext';
 import CheckoutInput from '../CheckoutInput/CheckoutInput';
 
 const DeliveryAddressWrapper = styled.div`
@@ -33,13 +30,12 @@ const Row = styled.div`
 
 const DeliveryAddress = () => {
   const { address } = useContext(CheckoutContext);
-  const { setAddress } = useContext(CheckoutActionContext);
 
   return (
     <DeliveryAddressWrapper>
       <Row>
         <CheckoutInput
-          update={(e) => setAddress({ ...address, line1: e })}
+          update={() => {}}
           label="Address Line 1*"
           width="97%"
           value={address.line1 ?? ''}
@@ -47,7 +43,7 @@ const DeliveryAddress = () => {
       </Row>
       <Row>
         <CheckoutInput
-          update={(e) => setAddress({ ...address, line2: e })}
+          update={() => {}}
           label="Address Line 2"
           width="97%"
           value={address.line2 ?? ''}
@@ -55,7 +51,7 @@ const DeliveryAddress = () => {
       </Row>
       <Row>
         <CheckoutInput
-          update={(e) => setAddress({ ...address, line3: e })}
+          update={() => {}}
           label="Address Line 3"
           width="97%"
           value={address.line3 ?? ''}
@@ -63,7 +59,7 @@ const DeliveryAddress = () => {
       </Row>
       <Row>
         <CheckoutInput
-          update={(e) => setAddress({ ...address, town: e })}
+          update={() => {}}
           label="Town"
           width="97%"
           value={address.town ?? ''}
@@ -71,13 +67,13 @@ const DeliveryAddress = () => {
       </Row>
       <Row>
         <CheckoutInput
-          update={(e) => setAddress({ ...address, county: e })}
+          update={() => {}}
           label="County"
           width="95%"
           value={address.county ?? ''}
         />
         <CheckoutInput
-          update={(e) => setAddress({ ...address, postCode: e })}
+          update={() => {}}
           label="Post Code*"
           width="95%"
           value={address.postCode ?? ''}

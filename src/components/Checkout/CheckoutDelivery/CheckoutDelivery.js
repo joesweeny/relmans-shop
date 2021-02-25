@@ -7,10 +7,7 @@ import CheckoutDate from './CheckoutDate/CheckoutDate';
 import CheckoutMethod from './CheckoutMethod/CheckoutMethod';
 import CheckoutTitle from '../CheckoutTitle/CheckoutTitle';
 import DeliveryInfo from './DeliveryInfo';
-import {
-  CheckoutContext,
-  CheckoutActionContext,
-} from '../../../context/CheckoutContext';
+import { CheckoutContext } from '../../../context/CheckoutContext';
 
 const CheckoutDeliveryWrapper = styled.div`
   display: -ms-flexbox;
@@ -27,19 +24,18 @@ const CheckoutDeliveryWrapper = styled.div`
 
 const CheckoutDelivery = (props) => {
   const { nextStep } = props;
-  const { date, method } = useContext(CheckoutContext);
-  const { setDate, setMethod } = useContext(CheckoutActionContext);
+  const { method } = useContext(CheckoutContext);
 
   return (
     <CheckoutDeliveryWrapper>
       <CheckoutTitle>Select a delivery option</CheckoutTitle>
       <CheckoutMethod
-        select={() => setMethod('Collection')}
+        select={() => {}}
         selectedMethod={method}
         title="Collection"
       />
       <CheckoutMethod
-        select={() => setMethod('Delivery')}
+        select={() => {}}
         selectedMethod={method}
         title="Delivery"
       />
@@ -47,11 +43,11 @@ const CheckoutDelivery = (props) => {
       {method ? (
         <CheckoutDate
           isCollection={method === 'Collection'}
-          selectedDate={date}
-          setSelectedDate={setDate}
+          selectedDate=""
+          setSelectedDate={() => {}}
         />
       ) : null}
-      {date ? (
+      {method.date ? (
         <CheckoutButton click={() => nextStep(2)} color="#f1943c" size="18px">
           Proceed to contact details
         </CheckoutButton>

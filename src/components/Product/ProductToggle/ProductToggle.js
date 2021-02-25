@@ -4,7 +4,7 @@ import { number, string } from 'prop-types';
 import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { BasketContext } from '../../../context/BasketContext';
+import { CheckoutContext } from '../../../context/CheckoutContext';
 import { addItem, removeItem } from '../../../store/actions/basket';
 
 const ProductToggleWrapper = styled.div`
@@ -43,7 +43,7 @@ const ProductToggleWrapper = styled.div`
 
 const ProductToggle = (props) => {
   const { productId, priceId, name, price, size, measurement } = props;
-  const { items, dispatch } = useContext(BasketContext);
+  const { items, dispatch } = useContext(CheckoutContext);
   const [count, setCount] = useState(0);
 
   useEffect(() => {

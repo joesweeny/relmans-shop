@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { BasketContext } from '../../../context/BasketContext';
+import { CheckoutContext } from '../../../context/CheckoutContext';
 import { emptyBasket } from '../../../store/actions/basket';
 
 const ClearBasketButtonWrapper = styled.div`
@@ -29,7 +29,7 @@ const ClearBasketButtonWrapper = styled.div`
 `;
 
 const ClearBasketButton = () => {
-  const { dispatch } = useContext(BasketContext);
+  const { dispatch } = useContext(CheckoutContext);
 
   return (
     <ClearBasketButtonWrapper onClick={() => dispatch(emptyBasket())}>

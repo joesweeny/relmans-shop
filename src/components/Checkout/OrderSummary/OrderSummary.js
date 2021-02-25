@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import CheckoutTitle from '../CheckoutTitle/CheckoutTitle';
 import BasketItem from '../../BasketItem/BasketItem';
-import { BasketContext } from '../../../context/BasketContext';
+import { CheckoutContext } from '../../../context/CheckoutContext';
 
 const OrderSummaryWrapper = styled.div`
   display: none;
@@ -21,7 +21,7 @@ const OrderSummaryWrapper = styled.div`
 `;
 
 const OrderSummary = () => {
-  const { items } = useContext(BasketContext);
+  const { items } = useContext(CheckoutContext);
   const [basket, setBasket] = useState([]);
 
   useEffect(() => {

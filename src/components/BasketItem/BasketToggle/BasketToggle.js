@@ -4,7 +4,7 @@ import { number, string } from 'prop-types';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { BasketContext } from '../../../context/BasketContext';
+import { CheckoutContext } from '../../../context/CheckoutContext';
 import { addItem, removeItem } from '../../../store/actions/basket';
 
 const BasketToggleWrapper = styled.div`
@@ -45,7 +45,7 @@ const Button = styled.p`
 
 const BasketToggle = (props) => {
   const { productId, priceId, name, price, size, measurement } = props;
-  const { items, dispatch } = useContext(BasketContext);
+  const { items, dispatch } = useContext(CheckoutContext);
   const [count, setCount] = useState(0);
 
   useEffect(() => {

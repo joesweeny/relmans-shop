@@ -1,63 +1,61 @@
-import React, { createContext, useMemo, useState } from 'react';
+import React, { createContext, useEffect, useReducer } from 'react';
 import { node } from 'prop-types';
 
+import reducer from '../store/reducers/basket';
+
 export const CheckoutContext = createContext(null);
-export const CheckoutActionContext = createContext(null);
 
-const CheckoutContextProvider = (props) => {
+const BasketContextProvider = (props) => {
+  const initialState = {
+    orderNumber: null,
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
+    address: {
+      line1: '',
+      line2: '',
+      line3: '',
+      town: '',
+      city: '',
+      postCode: '',
+    },
+    method: {
+      type: '',
+      date: null,
+      fee: 0,
+    },
+    items: JSON.parse(localStorage.getItem('relmansshop')) || [],
+  };
+
   const { children } = props;
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [address, setAddress] = useState({});
-  const [phone, setPhone] = useState(null);
-  const [method, setMethod] = useState(null);
-  const [date, setDate] = useState(null);
-  const [orderId, setOrderId] = useState(null);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const store = useMemo(
-    () => ({
-      address,
-      date,
-      firstName,
-      lastName,
-      method,
-      phone,
-    }),
-    [address, date, firstName, lastName, method, phone]
-  );
+  useEffect(() => {
+    localStorage.setItem('relmansshop', JSON.stringify(state.items));
+  }, [state.items]);
 
-  const actions = useMemo(
-    () => ({
-      setAddress,
-      setDate,
-      setFirstName,
-      setLastName,
-      setMethod,
-      setOrderId,
-      setPhone,
-    }),
-    [
-      setAddress,
-      setDate,
-      setFirstName,
-      setLastName,
-      setMethod,
-      setOrderId,
-      setPhone,
-    ]
-  );
+  const store = {
+    orderNumber: state.orderNumber,
+    firstName: state.firstName,
+    lastName: state.lastName,
+    phone: state.phone,
+    email: state.email,
+    address: state.address,
+    method: state.method,
+    items: state.items,
+    dispatch,
+  };
 
   return (
     <CheckoutContext.Provider value={store}>
-      <CheckoutActionContext.Provider value={actions}>
-        {children}
-      </CheckoutActionContext.Provider>
+      {children}
     </CheckoutContext.Provider>
   );
 };
 
-CheckoutContextProvider.propTypes = {
+BasketContextProvider.propTypes = {
   children: node.isRequired,
 };
 
-export default CheckoutContextProvider;
+export default BasketContextProvider;

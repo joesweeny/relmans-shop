@@ -5,9 +5,7 @@ import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 
 import CheckoutButton from '../CheckoutButton/CheckoutButton';
 import CheckoutTitle from '../CheckoutTitle/CheckoutTitle';
-import Loader from '../../Loader/Loader';
-import { BasketContext } from '../../../context/BasketContext';
-import { CheckoutActionContext } from '../../../context/CheckoutContext';
+import { CheckoutContext } from '../../../context/CheckoutContext';
 
 const CheckoutPaymentWrapper = styled.div`
   display: -ms-flexbox;
@@ -57,10 +55,8 @@ const options = {
 
 const CheckoutPayment = (props) => {
   const { nextStep } = props;
-  const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
-  const { items } = useContext(BasketContext);
-  const { setOrderId } = useContext(CheckoutActionContext);
+  const { items } = useContext(CheckoutContext);
 
   useEffect(() => {
     const sum = items.reduce((prev, next) => prev + next.total, 0);
@@ -82,8 +78,6 @@ const CheckoutPayment = (props) => {
 
   const onApprove = (data, actions) => {
     return actions.order.capture().then((details) => {
-      setLoading(false);
-      setOrderId(details.id);
       nextStep((prev) => prev + 1);
     });
   };
@@ -99,17 +93,13 @@ const CheckoutPayment = (props) => {
         Back to delivery
       </CheckoutButton>
       <TotalDisplay>£{(total / 100).toFixed(2)}</TotalDisplay>
-      {!loading ? (
-        <PayPalScriptProvider options={options}>
-          <PayPalButtons
-            createOrder={(data, actions) => createOrder(data, actions)}
-            onApprove={(data, actions) => onApprove(data, actions)}
-            className="paypal"
-          />
-        </PayPalScriptProvider>
-      ) : (
-        'Loading'
-      )}
+      <PayPalScriptProvider options={options}>
+        <PayPalButtons
+          createOrder={(data, actions) => createOrder(data, actions)}
+          onApprove={(data, actions) => onApprove(data, actions)}
+          className="paypal"
+        />
+      </PayPalScriptProvider>
     </CheckoutPaymentWrapper>
   );
 };
