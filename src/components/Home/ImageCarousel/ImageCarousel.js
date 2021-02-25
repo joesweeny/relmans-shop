@@ -3,17 +3,17 @@ import styled from 'styled-components';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 
-import image1 from '../../../assets/carousel/flash.jpg';
-import image2 from '../../../assets/carousel/flowers.jpg';
-import image3 from '../../../assets/carousel/peapods.jpg';
-import image4 from '../../../assets/carousel/potatoes.jpg';
+import image1 from '../../../assets/carousel/slider2.png';
+import image2 from '../../../assets/carousel/slider1.png';
+import image3 from '../../../assets/carousel/slider3.png';
+import image4 from '../../../assets/carousel/slider4.png';
 
 const CarouselWrapper = styled.div`
   width: 100%;
+  margin-top: 20px;
 
   img {
     height: 300px;
-    filter: brightness(50%);
   }
 
   @media (min-width: 758px) {
@@ -24,8 +24,10 @@ const CarouselWrapper = styled.div`
 
   @media (min-width: 959px) {
     img {
-      height: 800px;
+      height: 600px;
     }
+    width: 60%;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.23);
   }
 `;
 
