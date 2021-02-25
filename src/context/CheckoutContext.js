@@ -17,7 +17,7 @@ const CheckoutContextProvider = (props) => {
       line2: '',
       line3: '',
       town: '',
-      city: '',
+      county: '',
       postCode: '',
     },
     method: {

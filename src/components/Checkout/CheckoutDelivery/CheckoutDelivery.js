@@ -8,6 +8,7 @@ import CheckoutMethod from './CheckoutMethod/CheckoutMethod';
 import CheckoutTitle from '../CheckoutTitle/CheckoutTitle';
 import DeliveryInfo from './DeliveryInfo';
 import { CheckoutContext } from '../../../context/CheckoutContext';
+import { setDeliveryField } from '../../../store/actions/checkout';
 
 const CheckoutDeliveryWrapper = styled.div`
   display: -ms-flexbox;
@@ -24,27 +25,27 @@ const CheckoutDeliveryWrapper = styled.div`
 
 const CheckoutDelivery = (props) => {
   const { nextStep } = props;
-  const { method } = useContext(CheckoutContext);
+  const { method, dispatch } = useContext(CheckoutContext);
 
   return (
     <CheckoutDeliveryWrapper>
       <CheckoutTitle>Select a delivery option</CheckoutTitle>
       <CheckoutMethod
-        select={() => {}}
-        selectedMethod={method}
+        select={() => dispatch(setDeliveryField('type', 'COLLECTION'))}
+        selectedMethod={method.type}
         title="Collection"
       />
       <CheckoutMethod
-        select={() => {}}
-        selectedMethod={method}
+        select={() => dispatch(setDeliveryField('type', 'DELIVERY'))}
+        selectedMethod={method.type}
         title="Delivery"
       />
-      {method ? <DeliveryInfo method={method} /> : null}
-      {method ? (
+      {method.type ? <DeliveryInfo method={method.type} /> : null}
+      {method.type ? (
         <CheckoutDate
-          isCollection={method === 'Collection'}
-          selectedDate=""
-          setSelectedDate={() => {}}
+          isCollection={method.type === 'COLLECTION'}
+          selectedDate={method.date}
+          setSelectedDate={(d) => dispatch(setDeliveryField('date', d))}
         />
       ) : null}
       {method.date ? (

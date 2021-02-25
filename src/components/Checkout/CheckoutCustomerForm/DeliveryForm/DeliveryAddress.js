@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-import { CheckoutContext } from '../../../../context/CheckoutContext';
 import CheckoutInput from '../CheckoutInput/CheckoutInput';
+import { CheckoutContext } from '../../../../context/CheckoutContext';
+import { setAddressField } from '../../../../store/actions/checkout';
 
 const DeliveryAddressWrapper = styled.div`
   display: -ms-flexbox;
@@ -29,13 +30,13 @@ const Row = styled.div`
 `;
 
 const DeliveryAddress = () => {
-  const { address } = useContext(CheckoutContext);
+  const { address, dispatch } = useContext(CheckoutContext);
 
   return (
     <DeliveryAddressWrapper>
       <Row>
         <CheckoutInput
-          update={() => {}}
+          update={(v) => dispatch(setAddressField('line1', v))}
           label="Address Line 1*"
           width="97%"
           value={address.line1 ?? ''}
@@ -43,7 +44,7 @@ const DeliveryAddress = () => {
       </Row>
       <Row>
         <CheckoutInput
-          update={() => {}}
+          update={(v) => dispatch(setAddressField('line2', v))}
           label="Address Line 2"
           width="97%"
           value={address.line2 ?? ''}
@@ -51,7 +52,7 @@ const DeliveryAddress = () => {
       </Row>
       <Row>
         <CheckoutInput
-          update={() => {}}
+          update={(v) => dispatch(setAddressField('line3', v))}
           label="Address Line 3"
           width="97%"
           value={address.line3 ?? ''}
@@ -59,7 +60,7 @@ const DeliveryAddress = () => {
       </Row>
       <Row>
         <CheckoutInput
-          update={() => {}}
+          update={(v) => dispatch(setAddressField('town', v))}
           label="Town"
           width="97%"
           value={address.town ?? ''}
@@ -67,13 +68,13 @@ const DeliveryAddress = () => {
       </Row>
       <Row>
         <CheckoutInput
-          update={() => {}}
+          update={(v) => dispatch(setAddressField('county', v))}
           label="County"
           width="95%"
           value={address.county ?? ''}
         />
         <CheckoutInput
-          update={() => {}}
+          update={(v) => dispatch(setAddressField('postCode', v))}
           label="Post Code*"
           width="95%"
           value={address.postCode ?? ''}

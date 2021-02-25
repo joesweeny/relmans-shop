@@ -30,10 +30,13 @@ const Address = styled.div`
 const DeliveryInfo = (props) => {
   const { method } = props;
 
-  if (method === 'Collection') {
+  if (method === 'COLLECTION') {
     return (
       <DeliveryInfoWrapper>
-        <span>Please select a date and time to collect your order from:</span>
+        <span>
+          Please select a date and time to collect your order between 11am and
+          3pm from:
+        </span>
         <Address>
           <p>Relmans</p>
           <p>41 Middle Street</p>

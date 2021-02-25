@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import CheckoutInput from '../CheckoutInput/CheckoutInput';
+import { CheckoutContext } from '../../../../context/CheckoutContext';
+import { setCustomerField } from '../../../../store/actions/checkout';
 
 const ContactFormWrapper = styled.div`
   display: -ms-flexbox;
@@ -28,28 +30,38 @@ const Row = styled.div`
 `;
 
 const ContactForm = () => {
+  const { firstName, lastName, phone, email, dispatch } = useContext(
+    CheckoutContext
+  );
+
   return (
     <ContactFormWrapper>
       <Row>
         <CheckoutInput
-          update={() => {}}
+          update={(v) => dispatch(setCustomerField('firstName', v))}
           label="First Name*"
           width="95%"
-          value=""
+          value={firstName}
         />
         <CheckoutInput
-          update={() => {}}
+          update={(v) => dispatch(setCustomerField('lastName', v))}
           label="Last Name*"
           width="95%"
-          value=""
+          value={lastName}
         />
       </Row>
       <Row>
         <CheckoutInput
-          update={() => {}}
+          update={(v) => dispatch(setCustomerField('phone', v))}
           label="Phone Number*"
-          width="97%"
-          value=""
+          width="95%"
+          value={phone}
+        />
+        <CheckoutInput
+          update={(v) => dispatch(setCustomerField('email', v))}
+          label="Email Address*"
+          width="95%"
+          value={email}
         />
       </Row>
     </ContactFormWrapper>

@@ -53,7 +53,7 @@ const CheckoutDate = (props) => {
         selected={selectedDate}
         filterDate={dates}
         minDate={minDate}
-        minTime={new Date().setHours(9, 0, 0)}
+        minTime={new Date().setHours(11, 0, 0)}
         maxTime={new Date().setHours(15, 0, 0)}
         openToDate={minDate}
         onChange={(date) => setSelectedDate(date)}

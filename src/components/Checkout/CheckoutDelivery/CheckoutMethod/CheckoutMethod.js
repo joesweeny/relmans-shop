@@ -31,7 +31,7 @@ const CheckoutMethod = (props) => {
 
   return (
     <CheckoutMethodWrapper
-      selected={selectedMethod === title}
+      selected={selectedMethod === title.toUpperCase()}
       onClick={() => select()}
     >
       <p>{title}</p>

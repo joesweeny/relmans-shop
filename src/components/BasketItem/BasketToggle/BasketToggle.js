@@ -5,7 +5,7 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { CheckoutContext } from '../../../context/CheckoutContext';
-import { addItem, removeItem } from '../../../store/actions/basket';
+import { addItem, removeItem } from '../../../store/actions/checkout';
 
 const BasketToggleWrapper = styled.div`
   display: -ms-flexbox;
