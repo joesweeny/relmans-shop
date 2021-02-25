@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { func } from 'prop-types';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import Loader from 'react-loader-spinner';
 
 import CheckoutButton from '../CheckoutButton/CheckoutButton';
 import CheckoutTitle from '../CheckoutTitle/CheckoutTitle';
@@ -45,6 +46,23 @@ const TotalDisplay = styled.p`
   }
 `;
 
+const Loading = styled.div`
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  color: #3d604c;
+  font-size: 14px;
+  font-weight: 600;
+
+  p {
+    padding: 10px;
+    font-size: 16px;
+  }
+`;
+
 const options = {
   'client-id': process.env.REACT_APP_PAYPAL_CLIENT_ID,
   'buyer-country': 'GB',
@@ -56,6 +74,7 @@ const options = {
 const CheckoutPayment = (props) => {
   const { nextStep } = props;
   const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(false);
   const { items } = useContext(CheckoutContext);
 
   useEffect(() => {
@@ -64,6 +83,8 @@ const CheckoutPayment = (props) => {
   }, [items]);
 
   const createOrder = (data, actions) => {
+    setLoading(true);
+
     return actions.order.create({
       purchase_units: [
         {
@@ -78,6 +99,7 @@ const CheckoutPayment = (props) => {
 
   const onApprove = (data, actions) => {
     return actions.order.capture().then((details) => {
+      setLoading(false);
       nextStep((prev) => prev + 1);
     });
   };
@@ -85,14 +107,23 @@ const CheckoutPayment = (props) => {
   return (
     <CheckoutPaymentWrapper>
       <CheckoutTitle>Payment</CheckoutTitle>
-      <CheckoutButton
-        click={() => nextStep((prev) => prev - 1)}
-        color="#eeeeee"
-        size="12px"
-      >
-        Back to customer details
-      </CheckoutButton>
-      <TotalDisplay>£{(total / 100).toFixed(2)}</TotalDisplay>
+      {!loading ? (
+        <CheckoutButton
+          click={() => nextStep((prev) => prev - 1)}
+          color="#eeeeee"
+          size="12px"
+        >
+          Back to customer details
+        </CheckoutButton>
+      ) : null}
+      {loading ? (
+        <Loading>
+          <Loader type="Watch" color="#3d604c" height={100} width={100} />
+          <p>Processing your order</p>
+        </Loading>
+      ) : (
+        <TotalDisplay>£{(total / 100).toFixed(2)}</TotalDisplay>
+      )}
       <PayPalScriptProvider options={options}>
         <PayPalButtons
           createOrder={(data, actions) => createOrder(data, actions)}
