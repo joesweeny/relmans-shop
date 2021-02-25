@@ -1,10 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import {
-  CheckoutActionContext,
-  CheckoutContext,
-} from '../../../../context/CheckoutContext';
 import CheckoutInput from '../CheckoutInput/CheckoutInput';
 
 const ContactFormWrapper = styled.div`
@@ -32,33 +28,28 @@ const Row = styled.div`
 `;
 
 const ContactForm = () => {
-  const { firstName, lastName, phone } = useContext(CheckoutContext);
-  const { setFirstName, setLastName, setPhone } = useContext(
-    CheckoutActionContext
-  );
-
   return (
     <ContactFormWrapper>
       <Row>
         <CheckoutInput
-          update={setFirstName}
+          update={() => {}}
           label="First Name*"
           width="95%"
-          value={firstName ?? ''}
+          value=""
         />
         <CheckoutInput
-          update={setLastName}
+          update={() => {}}
           label="Last Name*"
           width="95%"
-          value={lastName ?? ''}
+          value=""
         />
       </Row>
       <Row>
         <CheckoutInput
-          update={setPhone}
+          update={() => {}}
           label="Phone Number*"
           width="97%"
-          value={phone ?? ''}
+          value=""
         />
       </Row>
     </ContactFormWrapper>

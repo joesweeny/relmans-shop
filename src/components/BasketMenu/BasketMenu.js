@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import BasketItem from '../BasketItem/BasketItem';
 import CheckoutButton from './CheckoutButton/CheckoutButton';
 import ClearBasketButton from './ClearBasketButton/ClearBasketButton';
-import { BasketContext } from '../../context/BasketContext';
+import { CheckoutContext } from '../../context/CheckoutContext';
 
 const BasketMenuWrapper = styled.div`
   display: ${(props) => (props.open ? '-ms-flexbox' : 'none')};
@@ -34,7 +34,7 @@ const BasketMenuWrapper = styled.div`
 
 const BasketMenu = (props) => {
   const { open, clickBasket } = props;
-  const { items } = useContext(BasketContext);
+  const { items } = useContext(CheckoutContext);
   const [basket, setBasket] = useState([]);
 
   useEffect(() => {

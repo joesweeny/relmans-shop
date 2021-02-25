@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { func } from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
-import { BasketContext } from '../../../context/BasketContext';
+import { CheckoutContext } from '../../../context/CheckoutContext';
 
 const CheckoutButtonWrapper = styled(NavLink)`
   display: -ms-flexbox;
@@ -30,7 +30,7 @@ const CheckoutButtonWrapper = styled(NavLink)`
 const CheckoutButton = (props) => {
   const { click } = props;
   const [total, setTotal] = useState(0);
-  const { items } = useContext(BasketContext);
+  const { items } = useContext(CheckoutContext);
 
   useEffect(() => {
     const sum = items.reduce((prev, next) => prev + next.total, 0);
