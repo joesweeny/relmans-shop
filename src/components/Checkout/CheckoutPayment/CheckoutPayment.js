@@ -6,7 +6,9 @@ import Loader from 'react-loader-spinner';
 
 import CheckoutButton from '../CheckoutButton/CheckoutButton';
 import CheckoutTitle from '../CheckoutTitle/CheckoutTitle';
+import PaymentTotal from './PaymentTotal/PaymentTotal';
 import { CheckoutContext } from '../../../context/CheckoutContext';
+import { setDeliveryField } from '../../../store/actions/checkout';
 
 const CheckoutPaymentWrapper = styled.div`
   display: -ms-flexbox;
@@ -18,7 +20,8 @@ const CheckoutPaymentWrapper = styled.div`
   background-color: #eeeeee;
   border-bottom: 1px solid #cecbcbee;
 
-  p {
+  p {import DeliveryTotal from './PaymentTotal/DeliveryTotal/DeliveryTotal';
+
     width: 100%;
   }
 
@@ -29,20 +32,6 @@ const CheckoutPaymentWrapper = styled.div`
 
   .paypal {
     width: 100%;
-  }
-`;
-
-const TotalDisplay = styled.p`
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 40px;
-  padding: 10px 10px 30px 10px;
-
-  @media (min-width: 1024px) {
-    font-size: 50px;
   }
 `;
 
@@ -75,13 +64,25 @@ const options = {
 const CheckoutPayment = (props) => {
   const { nextStep } = props;
   const [total, setTotal] = useState(0);
+  const [delivery, setDelivery] = useState(0);
   const [loading, setLoading] = useState(false);
-  const { items, createNewOrder } = useContext(CheckoutContext);
+  const { items, method, createNewOrder, dispatch } = useContext(
+    CheckoutContext
+  );
 
   useEffect(() => {
     const sum = items.reduce((prev, next) => prev + next.total, 0);
+    if (method.type === 'DELIVERY' && sum < 2500) {
+      dispatch(setDeliveryField('fee', 250));
+      setDelivery(250);
+    }
+
+    if (method.type === 'COLLECTION') {
+      dispatch(setDeliveryField('fee', 0));
+      setDelivery(0);
+    }
     setTotal(sum);
-  }, [items]);
+  }, [items, dispatch, method.type]);
 
   const createOrder = (data, actions) => {
     return actions.order.create({
@@ -89,7 +90,7 @@ const CheckoutPayment = (props) => {
         {
           amount: {
             currency_code: 'GBP',
-            value: (total / 100).toString(),
+            value: ((total + delivery) / 100).toString(),
           },
         },
       ],
@@ -124,7 +125,7 @@ const CheckoutPayment = (props) => {
           <p>Processing your order...please do not refresh the page</p>
         </Loading>
       ) : (
-        <TotalDisplay>£{(total / 100).toFixed(2)}</TotalDisplay>
+        <PaymentTotal fee={delivery} total={total} type={method.type} />
       )}
       <PayPalScriptProvider options={options}>
         <PayPalButtons
