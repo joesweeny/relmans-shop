@@ -102,6 +102,12 @@ const reducer = (state, action) => {
       return setDeliveryField(state, action);
     case actionTypes.SET_ADDRESS_FIELD:
       return setAddressField(state, action);
+    case actionTypes.SET_ORDER_COMPLETE:
+      return {
+        items: [],
+        email: state.email,
+        orderNumber: state.orderNumber,
+      };
     default:
       return state;
   }

@@ -14,6 +14,7 @@ const CheckoutTitleWrapper = styled.p`
   font-weight: 600;
   font-size: 14px;
   border-bottom: 1px solid #cecbcbee;
+  width: 100%;
 `;
 
 const CheckoutTitle = (props) => {

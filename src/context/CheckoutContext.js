@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useReducer } from 'react';
 import { node } from 'prop-types';
 
-import reducer from '../store/reducers/basket';
+import reducer from '../store/reducers/checkout';
 import { createOrder } from '../gateway/client';
 import { setOrderNumber } from '../store/actions/checkout';
 
@@ -9,20 +9,21 @@ export const CheckoutContext = createContext(null);
 
 const CheckoutContextProvider = (props) => {
   const initialState = {
-    firstName: '',
-    lastName: '',
-    phone: '',
-    email: '',
+    orderNumber: null,
+    firstName: null,
+    lastName: null,
+    phone: null,
+    email: null,
     address: {
-      line1: '',
-      line2: '',
-      line3: '',
-      town: '',
-      county: '',
-      postCode: '',
+      line1: null,
+      line2: null,
+      line3: null,
+      town: null,
+      county: null,
+      postCode: null,
     },
     method: {
-      type: '',
+      type: null,
       date: null,
       fee: 0,
     },
@@ -56,11 +57,9 @@ const CheckoutContextProvider = (props) => {
       items,
     };
 
-    createOrder(payload)
-      .then((number) => {
-        dispatch(setOrderNumber(number));
-      })
-      .catch((e) => console.log(e));
+    dispatch(setOrderNumber(orderNumber));
+
+    createOrder(payload).catch((e) => console.log(e));
   };
 
   const store = {
