@@ -20,8 +20,7 @@ const CheckoutPaymentWrapper = styled.div`
   background-color: #eeeeee;
   border-bottom: 1px solid #cecbcbee;
 
-  p {import DeliveryTotal from './PaymentTotal/DeliveryTotal/DeliveryTotal';
-
+  p {
     width: 100%;
   }
 
