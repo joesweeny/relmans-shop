@@ -10,7 +10,6 @@ import image4 from '../../../assets/carousel/slider4.png';
 
 const CarouselWrapper = styled.div`
   width: 100%;
-  margin-top: 20px;
 
   img {
     height: 300px;
@@ -23,11 +22,13 @@ const CarouselWrapper = styled.div`
   }
 
   @media (min-width: 959px) {
+    margin-top: 20px;
+    width: 60%;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.23);
+
     img {
       height: 600px;
     }
-    width: 60%;
-    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.23);
   }
 `;
 
