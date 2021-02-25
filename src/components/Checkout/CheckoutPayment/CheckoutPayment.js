@@ -90,7 +90,7 @@ const CheckoutPayment = (props) => {
         color="#eeeeee"
         size="12px"
       >
-        Back to delivery
+        Back to customer details
       </CheckoutButton>
       <TotalDisplay>£{(total / 100).toFixed(2)}</TotalDisplay>
       <PayPalScriptProvider options={options}>

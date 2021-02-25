@@ -39,12 +39,14 @@ const ContactForm = () => {
       <Row>
         <CheckoutInput
           update={(v) => dispatch(setCustomerField('firstName', v))}
+          type="text"
           label="First Name*"
           width="95%"
           value={firstName}
         />
         <CheckoutInput
           update={(v) => dispatch(setCustomerField('lastName', v))}
+          type="text"
           label="Last Name*"
           width="95%"
           value={lastName}
@@ -53,12 +55,14 @@ const ContactForm = () => {
       <Row>
         <CheckoutInput
           update={(v) => dispatch(setCustomerField('phone', v))}
+          type="text"
           label="Phone Number*"
           width="95%"
           value={phone}
         />
         <CheckoutInput
           update={(v) => dispatch(setCustomerField('email', v))}
+          type="email"
           label="Email Address*"
           width="95%"
           value={email}

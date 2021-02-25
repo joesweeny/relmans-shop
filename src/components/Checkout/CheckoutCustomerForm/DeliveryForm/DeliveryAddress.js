@@ -37,6 +37,7 @@ const DeliveryAddress = () => {
       <Row>
         <CheckoutInput
           update={(v) => dispatch(setAddressField('line1', v))}
+          type="text"
           label="Address Line 1*"
           width="97%"
           value={address.line1 ?? ''}
@@ -45,6 +46,7 @@ const DeliveryAddress = () => {
       <Row>
         <CheckoutInput
           update={(v) => dispatch(setAddressField('line2', v))}
+          type="text"
           label="Address Line 2"
           width="97%"
           value={address.line2 ?? ''}
@@ -53,6 +55,7 @@ const DeliveryAddress = () => {
       <Row>
         <CheckoutInput
           update={(v) => dispatch(setAddressField('line3', v))}
+          type="text"
           label="Address Line 3"
           width="97%"
           value={address.line3 ?? ''}
@@ -61,6 +64,7 @@ const DeliveryAddress = () => {
       <Row>
         <CheckoutInput
           update={(v) => dispatch(setAddressField('town', v))}
+          type="text"
           label="Town"
           width="97%"
           value={address.town ?? ''}
@@ -69,12 +73,14 @@ const DeliveryAddress = () => {
       <Row>
         <CheckoutInput
           update={(v) => dispatch(setAddressField('county', v))}
+          type="text"
           label="County"
           width="95%"
           value={address.county ?? ''}
         />
         <CheckoutInput
           update={(v) => dispatch(setAddressField('postCode', v))}
+          type="text"
           label="Post Code*"
           width="95%"
           value={address.postCode ?? ''}

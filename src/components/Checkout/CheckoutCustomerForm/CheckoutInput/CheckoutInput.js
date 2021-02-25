@@ -28,13 +28,13 @@ const CheckoutInputWrapper = styled.div`
 `;
 
 const CheckoutInput = (props) => {
-  const { label, value, update, width } = props;
+  const { label, type, value, update, width } = props;
 
   return (
     <CheckoutInputWrapper width={width}>
       <label htmlFor={label}>{label}</label>
       <input
-        type="text"
+        type={type}
         value={value}
         onChange={(e) => update(e.target.value)}
         width={width}
@@ -46,6 +46,7 @@ const CheckoutInput = (props) => {
 
 CheckoutInput.propTypes = {
   label: string.isRequired,
+  type: string.isRequired,
   value: string,
   update: func.isRequired,
   width: string.isRequired,
