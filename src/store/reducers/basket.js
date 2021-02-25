@@ -2,8 +2,8 @@ import * as actionTypes from '../actions/actionTypes';
 import addSortItem from '../../utility/basket';
 
 const addItem = (state, action) => {
-  const item = state.find((i) => i.priceId === action.priceId) || null;
-  const items = state.filter((i) => i.priceId !== action.priceId);
+  const item = state.items.find((i) => i.priceId === action.priceId) || null;
+  const items = state.items.filter((i) => i.priceId !== action.priceId);
 
   const newItem = {
     priceId: action.priceId,
@@ -23,8 +23,8 @@ const addItem = (state, action) => {
 };
 
 const removeItem = (state, action) => {
-  const item = state.find((i) => i.priceId === action.priceId) || null;
-  const items = state.filter((i) => i.priceId !== action.priceId);
+  const item = state.items.find((i) => i.priceId === action.priceId) || null;
+  const items = state.items.filter((i) => i.priceId !== action.priceId);
 
   if (item === null || item.count === 1) {
     return {
@@ -88,7 +88,10 @@ const setAddressField = (state, action) => {
 const reducer = (state, action) => {
   switch (action.type) {
     case actionTypes.EMPTY_BASKET:
-      return [];
+      return {
+        ...state,
+        items: [],
+      };
     case actionTypes.ADD_BASKET_ITEM:
       return addItem(state, action);
     case actionTypes.REMOVE_BASKET_ITEM:
