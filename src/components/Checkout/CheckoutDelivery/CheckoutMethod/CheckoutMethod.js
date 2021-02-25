@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { func, string } from 'prop-types';
+import { bool, func, string } from 'prop-types';
 import { faMale, faShuttleVan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -25,15 +25,12 @@ const CheckoutMethodWrapper = styled.div`
 `;
 
 const CheckoutMethod = (props) => {
-  const { select, selectedMethod, title } = props;
+  const { select, isSelected, title } = props;
 
   const icon = title === 'Collection' ? faMale : faShuttleVan;
 
   return (
-    <CheckoutMethodWrapper
-      selected={selectedMethod === title.toUpperCase()}
-      onClick={() => select()}
-    >
+    <CheckoutMethodWrapper selected={isSelected} onClick={() => select()}>
       <p>{title}</p>
       <FontAwesomeIcon icon={icon} size="1x" />
     </CheckoutMethodWrapper>
@@ -42,12 +39,8 @@ const CheckoutMethod = (props) => {
 
 CheckoutMethod.propTypes = {
   select: func.isRequired,
-  selectedMethod: string,
+  isSelected: bool.isRequired,
   title: string.isRequired,
-};
-
-CheckoutMethod.defaultProps = {
-  selectedMethod: null,
 };
 
 export default CheckoutMethod;
