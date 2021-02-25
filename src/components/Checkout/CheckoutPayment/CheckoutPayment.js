@@ -63,7 +63,7 @@ const options = {
 const CheckoutPayment = (props) => {
   const { nextStep } = props;
   const [total, setTotal] = useState(0);
-  const [delivery, setDelivery] = useState(0);
+  const [fee, setFee] = useState(0);
   const [loading, setLoading] = useState(false);
   const { items, method, createNewOrder, dispatch } = useContext(
     CheckoutContext
@@ -71,15 +71,19 @@ const CheckoutPayment = (props) => {
 
   useEffect(() => {
     const sum = items.reduce((prev, next) => prev + next.total, 0);
-    if (method.type === 'DELIVERY' && sum < 2500) {
-      dispatch(setDeliveryField('fee', 250));
-      setDelivery(250);
+
+    if (method.type === 'DELIVERY') {
+      const delivery = sum < 2500 ? 250 : 0;
+
+      dispatch(setDeliveryField('fee', delivery));
+      setFee(delivery);
     }
 
     if (method.type === 'COLLECTION') {
       dispatch(setDeliveryField('fee', 0));
-      setDelivery(0);
+      setFee(0);
     }
+
     setTotal(sum);
   }, [items, dispatch, method.type]);
 
@@ -89,7 +93,7 @@ const CheckoutPayment = (props) => {
         {
           amount: {
             currency_code: 'GBP',
-            value: ((total + delivery) / 100).toString(),
+            value: ((total + fee) / 100).toString(),
           },
         },
       ],
@@ -124,13 +128,14 @@ const CheckoutPayment = (props) => {
           <p>Processing your order...please do not refresh the page</p>
         </Loading>
       ) : (
-        <PaymentTotal fee={delivery} total={total} type={method.type} />
+        <PaymentTotal fee={fee} total={total} type={method.type} />
       )}
       <PayPalScriptProvider options={options}>
         <PayPalButtons
           createOrder={(data, actions) => createOrder(data, actions)}
           onApprove={(data, actions) => onApprove(data, actions)}
           className="paypal"
+          forceReRender={total}
         />
       </PayPalScriptProvider>
     </CheckoutPaymentWrapper>
