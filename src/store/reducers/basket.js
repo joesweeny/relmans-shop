@@ -16,7 +16,10 @@ const addItem = (state, action) => {
     count: item === null ? 1 : (item.count += 1),
   };
 
-  return addSortItem(items, newItem);
+  return {
+    ...state,
+    items: addSortItem(items, newItem),
+  };
 };
 
 const removeItem = (state, action) => {
@@ -24,7 +27,10 @@ const removeItem = (state, action) => {
   const items = state.filter((i) => i.priceId !== action.priceId);
 
   if (item === null || item.count === 1) {
-    return [...items];
+    return {
+      ...state,
+      items: [...items],
+    };
   }
 
   const newItem = {
@@ -33,7 +39,50 @@ const removeItem = (state, action) => {
     count: (item.count -= 1),
   };
 
-  return addSortItem(items, newItem);
+  return {
+    ...state,
+    items: addSortItem(items, newItem),
+  };
+};
+
+const setCustomerField = (state, action) => {
+  return {
+    ...state,
+    [action.key]: action.value,
+  };
+};
+
+const setOrderNumber = (state, action) => {
+  const { orderNumber } = action.orderNumber;
+
+  return {
+    ...state,
+    orderNumber,
+  };
+};
+
+const setDeliveryField = (state, action) => {
+  const { method } = state;
+
+  return {
+    ...state,
+    method: {
+      ...method,
+      [action.key]: action.value,
+    },
+  };
+};
+
+const setAddressField = (state, action) => {
+  const { address } = state;
+
+  return {
+    ...state,
+    address: {
+      ...address,
+      [action.key]: action.value,
+    },
+  };
 };
 
 const reducer = (state, action) => {
@@ -44,6 +93,14 @@ const reducer = (state, action) => {
       return addItem(state, action);
     case actionTypes.REMOVE_BASKET_ITEM:
       return removeItem(state, action);
+    case actionTypes.SET_CUSTOMER_FIELD:
+      return setCustomerField(state, action);
+    case actionTypes.SET_ORDER_NUMBER:
+      return setOrderNumber(state, action);
+    case actionTypes.SET_DELIVERY_FIELD:
+      return setDeliveryField(state, action);
+    case actionTypes.SET_ADDRESS_FIELD:
+      return setAddressField(state, action);
     default:
       return state;
   }

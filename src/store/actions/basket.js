@@ -25,3 +25,34 @@ export const removeItem = (priceId, price) => {
     price,
   };
 };
+
+export const setCustomerField = (key, value) => {
+  return {
+    type: actionTypes.SET_CUSTOMER_FIELD,
+    key,
+    value,
+  };
+};
+
+export const setOrderNumber = (orderNumber) => {
+  return {
+    type: actionTypes.SET_ORDER_NUMBER,
+    orderNumber,
+  };
+};
+
+export const setDeliveryField = (key, value) => {
+  return {
+    type: actionTypes.SET_DELIVERY_FIELD,
+    key,
+    value,
+  };
+};
+
+export const setAddressField = (key, value) => {
+  return {
+    type: actionTypes.SET_ADDRESS_FIELD,
+    key,
+    value,
+  };
+};
