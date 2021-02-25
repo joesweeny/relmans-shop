@@ -9,3 +9,8 @@ export const getProducts = async (categoryId) => {
   const response = await axios.get('/product', { params: { categoryId } });
   return response.data.data.products;
 };
+
+export const createOrder = async (payload) => {
+  const response = await axios.post('/order', payload);
+  return response.data.id;
+};

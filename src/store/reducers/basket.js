@@ -53,11 +53,9 @@ const setCustomerField = (state, action) => {
 };
 
 const setOrderNumber = (state, action) => {
-  const { orderNumber } = action.orderNumber;
-
   return {
     ...state,
-    orderNumber,
+    orderNumber: action.orderNumber,
   };
 };
 

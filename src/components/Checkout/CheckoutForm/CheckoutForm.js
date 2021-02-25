@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import CheckoutDelivery from '../CheckoutDelivery/CheckoutDelivery';
 import CheckoutCustomerForm from '../CheckoutCustomerForm/CheckoutCustomerForm';
 import CheckoutPayment from '../CheckoutPayment/CheckoutPayment';
+import CheckoutSuccess from '../CheckoutSuccess/CheckoutSuccess';
 
 const CheckoutFormWrapper = styled.div`
   display: -ms-flexbox;
@@ -36,7 +37,7 @@ const CheckoutForm = () => {
       component = <CheckoutPayment nextStep={setStep} />;
       break;
     case 4:
-      component = <p>You have made payment. Thank you</p>;
+      component = <CheckoutSuccess />;
       break;
     default:
       component = null;
