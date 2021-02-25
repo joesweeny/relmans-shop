@@ -75,7 +75,7 @@ const CheckoutPayment = (props) => {
   const { nextStep } = props;
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
-  const { items } = useContext(CheckoutContext);
+  const { items, createNewOrder } = useContext(CheckoutContext);
 
   useEffect(() => {
     const sum = items.reduce((prev, next) => prev + next.total, 0);
@@ -83,8 +83,6 @@ const CheckoutPayment = (props) => {
   }, [items]);
 
   const createOrder = (data, actions) => {
-    setLoading(true);
-
     return actions.order.create({
       purchase_units: [
         {
@@ -98,7 +96,10 @@ const CheckoutPayment = (props) => {
   };
 
   const onApprove = (data, actions) => {
+    setLoading(true);
+
     return actions.order.capture().then((details) => {
+      createNewOrder(details.id);
       setLoading(false);
       nextStep((prev) => prev + 1);
     });
@@ -119,7 +120,7 @@ const CheckoutPayment = (props) => {
       {loading ? (
         <Loading>
           <Loader type="Watch" color="#3d604c" height={100} width={100} />
-          <p>Processing your order</p>
+          <p>Processing your order...please do not refresh the page</p>
         </Loading>
       ) : (
         <TotalDisplay>£{(total / 100).toFixed(2)}</TotalDisplay>
