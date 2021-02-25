@@ -1,20 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { func } from 'prop-types';
 
-import CheckoutButton from '../CheckoutButton/CheckoutButton';
-import CheckoutDate from './CheckoutDate/CheckoutDate';
-import CheckoutMethod from './CheckoutMethod/CheckoutMethod';
+import CheckoutCollectionForm from './CheckoutCollectionForm/CheckoutCollectionForm';
+import CheckoutDeliveryForm from './CheckoutDeliveryForm/CheckoutDeliveryForm';
 import CheckoutTitle from '../CheckoutTitle/CheckoutTitle';
-import DeliveryInfo from './DeliveryInfo';
-import { CheckoutContext } from '../../../context/CheckoutContext';
-import { setDeliveryField } from '../../../store/actions/checkout';
 
 const CheckoutDeliveryWrapper = styled.div`
   display: -ms-flexbox;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
   width: 100%;
 
   @media (min-width: 1024px) {
@@ -25,34 +22,12 @@ const CheckoutDeliveryWrapper = styled.div`
 
 const CheckoutDelivery = (props) => {
   const { nextStep } = props;
-  const { method, dispatch } = useContext(CheckoutContext);
 
   return (
     <CheckoutDeliveryWrapper>
       <CheckoutTitle>Select a delivery option</CheckoutTitle>
-      <CheckoutMethod
-        select={() => dispatch(setDeliveryField('type', 'COLLECTION'))}
-        selectedMethod={method.type}
-        title="Collection"
-      />
-      <CheckoutMethod
-        select={() => dispatch(setDeliveryField('type', 'DELIVERY'))}
-        selectedMethod={method.type}
-        title="Delivery"
-      />
-      {method.type ? <DeliveryInfo method={method.type} /> : null}
-      {method.type ? (
-        <CheckoutDate
-          isCollection={method.type === 'COLLECTION'}
-          selectedDate={method.date}
-          setSelectedDate={(d) => dispatch(setDeliveryField('date', d))}
-        />
-      ) : null}
-      {method.date ? (
-        <CheckoutButton click={() => nextStep(2)} color="#f1943c" size="18px">
-          Proceed to contact details
-        </CheckoutButton>
-      ) : null}
+      <CheckoutCollectionForm nextStep={nextStep} />
+      <CheckoutDeliveryForm nextStep={nextStep} />
     </CheckoutDeliveryWrapper>
   );
 };
