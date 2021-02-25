@@ -6,19 +6,44 @@ import reducer from '../store/reducers/basket';
 export const BasketContext = createContext(null);
 
 const BasketContextProvider = (props) => {
+  const initialState = {
+    orderNumber: null,
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
+    address: {
+      line1: '',
+      line2: '',
+      line3: '',
+      town: '',
+      city: '',
+      postCode: '',
+    },
+    method: {
+      type: '',
+      date: '',
+      fee: 0,
+    },
+    items: JSON.parse(localStorage.getItem('relmansshop')) || [],
+  };
+
   const { children } = props;
-  const [items, dispatch] = useReducer(
-    reducer,
-    [],
-    (initial) => JSON.parse(localStorage.getItem('relmansshop')) || initial
-  );
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    localStorage.setItem('relmansshop', JSON.stringify(items));
-  }, [items]);
+    localStorage.setItem('relmansshop', JSON.stringify(state.items));
+  }, [state.items]);
 
   const store = {
-    items,
+    orderNumber: state.orderNumber,
+    firstName: state.firstName,
+    lastName: state.lastName,
+    phone: state.phone,
+    email: state.email,
+    address: state.address,
+    method: state.method,
+    items: state.items,
     dispatch,
   };
 
