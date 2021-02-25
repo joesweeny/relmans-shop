@@ -5,7 +5,7 @@ import reducer from '../store/reducers/basket';
 
 export const CheckoutContext = createContext(null);
 
-const BasketContextProvider = (props) => {
+const CheckoutContextProvider = (props) => {
   const initialState = {
     orderNumber: null,
     firstName: '',
@@ -54,8 +54,8 @@ const BasketContextProvider = (props) => {
   );
 };
 
-BasketContextProvider.propTypes = {
+CheckoutContextProvider.propTypes = {
   children: node.isRequired,
 };
 
-export default BasketContextProvider;
+export default CheckoutContextProvider;
