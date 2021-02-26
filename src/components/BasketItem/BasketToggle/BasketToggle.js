@@ -18,7 +18,7 @@ const BasketToggleWrapper = styled.div`
   height: 100%;
   border-left: 1px solid #cecbcbee;
   border-right: 1px solid #cecbcbee;
-  background-color: #ffffff;
+  background-color: #eeeeee;
   width: 30%;
 
   span {
@@ -40,7 +40,10 @@ const Button = styled.p`
   width: 100%;
   align-items: center;
   cursor: pointer;
-  background-color: #8f9290;
+
+  &:hover {
+    background-color: #3d604c;
+  }
 `;
 
 const BasketToggle = (props) => {

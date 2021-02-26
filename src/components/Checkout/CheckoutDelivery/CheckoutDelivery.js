@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { func } from 'prop-types';
 
 import CheckoutCollectionForm from './CheckoutCollectionForm/CheckoutCollectionForm';
 import CheckoutDeliveryForm from './CheckoutDeliveryForm/CheckoutDeliveryForm';
+import CheckoutMethod from './CheckoutMethod/CheckoutMethod';
 import CheckoutTitle from '../CheckoutTitle/CheckoutTitle';
+import { CheckoutContext } from '../../../context/CheckoutContext';
+import { setDeliveryField } from '../../../store/actions/checkout';
 
 const CheckoutDeliveryWrapper = styled.div`
   display: -ms-flexbox;
@@ -22,12 +25,40 @@ const CheckoutDeliveryWrapper = styled.div`
 
 const CheckoutDelivery = (props) => {
   const { nextStep } = props;
+  const [selected, setSelected] = useState(null);
+  const { dispatch } = useContext(CheckoutContext);
+
+  const selectCollection = () => {
+    dispatch(setDeliveryField('type', 'COLLECTION'));
+    setSelected('COLLECTION');
+  };
+
+  const selectDelivery = () => {
+    dispatch(setDeliveryField('type', 'DELIVERY'));
+    setSelected('DELIVERY');
+  };
 
   return (
     <CheckoutDeliveryWrapper>
       <CheckoutTitle>Select a delivery option</CheckoutTitle>
-      <CheckoutCollectionForm nextStep={nextStep} />
-      <CheckoutDeliveryForm nextStep={nextStep} />
+      <CheckoutMethod
+        select={() => selectCollection()}
+        isSelected={selected === 'COLLECTION'}
+        title="Collection"
+      />
+      <CheckoutMethod
+        select={() => selectDelivery()}
+        isSelected={selected === 'DELIVERY'}
+        title="Delivery"
+      />
+      <CheckoutCollectionForm
+        isSelected={selected === 'COLLECTION'}
+        nextStep={nextStep}
+      />
+      <CheckoutDeliveryForm
+        isSelected={selected === 'DELIVERY'}
+        nextStep={nextStep}
+      />
     </CheckoutDeliveryWrapper>
   );
 };

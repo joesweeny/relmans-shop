@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { func } from 'prop-types';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import CheckoutButton from '../CheckoutButton/CheckoutButton';
 import CheckoutTitle from '../CheckoutTitle/CheckoutTitle';
@@ -59,6 +61,7 @@ const CheckoutCustomerForm = (props) => {
         color="#eeeeee"
         size="12px"
       >
+        <FontAwesomeIcon icon={faArrowLeft} size="1x" />
         Back to delivery
       </CheckoutButton>
       <span>Fields marked with a * need to be filled before proceeding</span>
