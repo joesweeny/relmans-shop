@@ -5,7 +5,8 @@ import { func, node, string } from 'prop-types';
 const CheckoutButtonWrapper = styled.p`
   display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
   background-color: ${(props) => props.color};
   text-transform: uppercase;
@@ -14,6 +15,10 @@ const CheckoutButtonWrapper = styled.p`
   font-weight: 600;
   font-size: ${(props) => props.size};
   cursor: pointer;
+
+  svg {
+    margin-right: 5px;
+  }
 `;
 
 const CheckoutButton = (props) => {

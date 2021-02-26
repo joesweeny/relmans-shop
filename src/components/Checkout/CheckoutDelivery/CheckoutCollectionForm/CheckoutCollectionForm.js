@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { func } from 'prop-types';
+import { bool, func } from 'prop-types';
 
 import CheckoutButton from '../../CheckoutButton/CheckoutButton';
 import CheckoutDate from '../CheckoutDate/CheckoutDate';
@@ -26,7 +26,7 @@ const Info = styled.div`
   width: 100%;
   text-align: center;
   background-color: #eeeeee;
-  padding: 10px 0 10px 0;
+  padding: 10px 0 0 0;
 
   span {
     font-size: 14px;
@@ -45,23 +45,17 @@ const Address = styled.div`
 `;
 
 const CheckoutCollectionForm = (props) => {
-  const { nextStep } = props;
+  const { isSelected, nextStep } = props;
   const { method, dispatch } = useContext(CheckoutContext);
-
-  const isSelected = method.type === 'COLLECTION';
 
   return (
     <CheckoutCollectionFormWrapper>
-      <CheckoutMethod
-        select={() => dispatch(setDeliveryField('type', 'COLLECTION'))}
-        isSelected={isSelected}
-        title="Collection"
-      />
       {isSelected ? (
         <Info>
           <span>
-            Please select a date and time to collect your order between 11am and
-            3pm from:
+            We are open Tuesday to Saturday.
+            <br /> Please select a date and time to collect your order between
+            11am and 3pm from:
           </span>
           <Address>
             <p>Relmans</p>
@@ -90,6 +84,7 @@ const CheckoutCollectionForm = (props) => {
 };
 
 CheckoutCollectionForm.propTypes = {
+  isSelected: bool.isRequired,
   nextStep: func.isRequired,
 };
 

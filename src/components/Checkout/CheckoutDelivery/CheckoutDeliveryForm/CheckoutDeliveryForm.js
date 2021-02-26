@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
-import { func } from 'prop-types';
+import { bool, func } from 'prop-types';
 
 import CheckoutButton from '../../CheckoutButton/CheckoutButton';
 import CheckoutDate from '../CheckoutDate/CheckoutDate';
@@ -27,7 +27,7 @@ const Info = styled.div`
   width: 100%;
   text-align: center;
   background-color: #eeeeee;
-  padding: 10px 0 10px 0;
+  padding: 10px 0 0 0;
 
   span {
     font-size: 14px;
@@ -38,26 +38,19 @@ const Info = styled.div`
 `;
 
 const CheckoutDeliveryForm = (props) => {
-  const { nextStep } = props;
+  const { isSelected, nextStep } = props;
   const { method, address, dispatch } = useContext(CheckoutContext);
   const [isValid, setIsValid] = useState(address.postCode !== null);
 
-  const isSelected = method.type === 'DELIVERY';
-
   return (
     <CheckoutDeliveryFormWrapper>
-      <CheckoutMethod
-        select={() => dispatch(setDeliveryField('type', 'DELIVERY'))}
-        isSelected={isSelected}
-        title="Delivery"
-      />
       {!isValid && isSelected ? (
         <PostcodeValidation isValid={setIsValid} />
       ) : null}
       {isValid && isSelected ? (
         <Info>
           <span>Please select a date for delivery.</span>
-          <span>Deliveries are made between 11am and 2pm</span>
+          <span>We deliver Tuesday to Saturday between 11am and 2pm.</span>
           <CheckoutDate
             isCollection={false}
             selectedDate={method.date}
@@ -79,6 +72,7 @@ const CheckoutDeliveryForm = (props) => {
 };
 
 CheckoutDeliveryForm.propTypes = {
+  isSelected: bool.isRequired,
   nextStep: func.isRequired,
 };
 

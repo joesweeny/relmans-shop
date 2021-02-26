@@ -35,7 +35,7 @@ const DeliveryFeeDisplay = styled.div`
   text-align: center;
 
   p {
-    font-size: 18px;
+    font-size: 14px;
     padding-top: 10px;
     color: black;
   }
@@ -52,8 +52,7 @@ const DeliveryTotal = (props) => {
         <DeliveryFeeDisplay>
           <span>£{((total + fee) / 100).toFixed(2)}</span>
           <p>
-            Total £{(total / 100).toFixed(2)} + £{(fee / 100).toFixed(2)}{' '}
-            delivery
+            £{(total / 100).toFixed(2)} + £{(fee / 100).toFixed(2)} delivery
           </p>
           <p>
             Spend <b>£{((2500 - total) / 100).toFixed(2)}</b> more to qualify

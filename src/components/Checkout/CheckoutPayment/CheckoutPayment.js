@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { func } from 'prop-types';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import Loader from 'react-loader-spinner';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import CheckoutButton from '../CheckoutButton/CheckoutButton';
 import CheckoutTitle from '../CheckoutTitle/CheckoutTitle';
@@ -119,6 +121,7 @@ const CheckoutPayment = (props) => {
           color="#eeeeee"
           size="12px"
         >
+          <FontAwesomeIcon icon={faArrowLeft} size="1x" />
           Back to customer details
         </CheckoutButton>
       ) : null}
