@@ -13,7 +13,7 @@ const BasketMenuWrapper = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  height: calc(100% - 60px);
   position: fixed;
   width: 100vw;
   background-color: #3d604c;
@@ -24,6 +24,7 @@ const BasketMenuWrapper = styled.div`
 
   @media (min-width: 756px) {
     width: 50vw;
+    height: 100%;
   }
 
   @media (min-width: 1024px) {
