@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
+import CookieConsent from 'react-cookie-consent';
 
 import CategoryContextProvider from './context/CategoryContext';
 import CheckoutContextProvider from './context/CheckoutContext';
@@ -38,6 +39,21 @@ const App = () => {
           </BrowserRouter>
         </Container>
       </CheckoutContextProvider>
+      <CookieConsent
+        location="bottom"
+        buttonText="I understand"
+        cookieName="relmansshoppolicy"
+        style={{
+          background: '#3d604c',
+          height: '60px',
+          fontSize: '14px',
+          marginBottom: '10px',
+        }}
+        buttonStyle={{ color: '#f1943c', fontSize: '13px' }}
+        expires={150}
+      >
+        We use cookies to improve your experience.
+      </CookieConsent>
     </CategoryContextProvider>
   );
 };
