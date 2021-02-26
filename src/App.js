@@ -39,21 +39,6 @@ const App = () => {
           </BrowserRouter>
         </Container>
       </CheckoutContextProvider>
-      <CookieConsent
-        location="bottom"
-        buttonText="I understand"
-        cookieName="relmansshoppolicy"
-        style={{
-          background: '#3d604c',
-          height: '60px',
-          fontSize: '14px',
-          marginBottom: '10px',
-        }}
-        buttonStyle={{ backgroundColor: '#f1943c', fontSize: '13px' }}
-        expires={150}
-      >
-        We use cookies to improve your experience.
-      </CookieConsent>
     </CategoryContextProvider>
   );
 };

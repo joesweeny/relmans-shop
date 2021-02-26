@@ -4,7 +4,6 @@ import { bool, func } from 'prop-types';
 
 import CheckoutButton from '../../CheckoutButton/CheckoutButton';
 import CheckoutDate from '../CheckoutDate/CheckoutDate';
-import CheckoutMethod from '../CheckoutMethod/CheckoutMethod';
 import { CheckoutContext } from '../../../../context/CheckoutContext';
 import { setDeliveryField } from '../../../../store/actions/checkout';
 
@@ -26,7 +25,7 @@ const Info = styled.div`
   width: 100%;
   text-align: center;
   background-color: #eeeeee;
-  padding: 10px 0 0 0;
+  padding: 10px 10px 0 10px;
 
   span {
     font-size: 14px;
