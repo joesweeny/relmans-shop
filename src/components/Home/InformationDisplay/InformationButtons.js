@@ -55,12 +55,12 @@ const InformationButtons = () => {
   return (
     <InformationDisplayWrapper>
       <Button>
-        <FontAwesomeIcon icon={faQuestionCircle} size="2x" />
-        <p>FAQ</p>
-      </Button>
-      <Button>
         <FontAwesomeIcon icon={faInfoCircle} size="2x" />
         <p>About Us</p>
+      </Button>
+      <Button>
+        <FontAwesomeIcon icon={faQuestionCircle} size="2x" />
+        <p>FAQ</p>
       </Button>
     </InformationDisplayWrapper>
   );
