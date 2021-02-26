@@ -60,6 +60,7 @@ const PriceMeasurementStatus = styled.div`
   -webkit-flex-direction: column;
   flex-direction: column;
   width: 100%;
+  height: fit-content;
 
   @media (min-width: 1025px) {
     -webkit-flex-direction: row;
@@ -135,6 +136,7 @@ const Product = (props) => {
         name={name}
         price={price}
         size={size}
+        status={status}
         measurement={measurement}
       />
     </ProductWrapper>
