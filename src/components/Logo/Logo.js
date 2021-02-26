@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { func } from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import brand from '../../assets/relmanslogo.png';
 
@@ -12,12 +13,24 @@ const LogoWrapper = styled.img`
   }
 `;
 
-const logo = () => {
+const Logo = (props) => {
+  const { clickBasket, clickMenu } = props;
+
+  const onClick = () => {
+    clickBasket(false);
+    clickMenu(false);
+  };
+
   return (
-    <NavLink to="/">
+    <NavLink to="/" onClick={() => onClick()}>
       <LogoWrapper src={brand} />
     </NavLink>
   );
 };
 
-export default logo;
+Logo.propTypes = {
+  clickBasket: func.isRequired,
+  clickMenu: func.isRequired,
+};
+
+export default Logo;

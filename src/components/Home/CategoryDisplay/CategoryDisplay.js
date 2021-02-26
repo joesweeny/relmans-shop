@@ -14,9 +14,11 @@ const CategoryDisplayWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  margin: 10px 0 10px 0;
 
   @media (min-width: 1025px) {
     width: 60%;
+    margin: 20px 0 20px 0;
   }
 `;
 
