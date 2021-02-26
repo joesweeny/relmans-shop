@@ -17,7 +17,7 @@ const ProductToggleWrapper = styled.div`
   align-items: center;
   border-radius: 0 0 10px 10px;
   font-weight: 600;
-  height: fit-content;
+  height: 40px;
   padding: 10px;
 
   p {
@@ -35,6 +35,7 @@ const ProductToggleWrapper = styled.div`
 
   @media (min-width: 1024px) {
     padding: 10px 20px 10px 20px;
+    height: 50px;
 
     p {
       font-size: 30px;
