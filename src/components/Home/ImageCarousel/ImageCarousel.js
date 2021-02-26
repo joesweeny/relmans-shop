@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 
-import image1 from '../../../assets/carousel/slider2.png';
-import image2 from '../../../assets/carousel/slider1.png';
-import image3 from '../../../assets/carousel/slider3.png';
-import image4 from '../../../assets/carousel/slider4.png';
+import image1 from '../../../assets/carousel/slider2-min.png';
+import image2 from '../../../assets/carousel/slider1-min.png';
+import image3 from '../../../assets/carousel/slider3-min.png';
+import image4 from '../../../assets/carousel/slider4-min.png';
 
 const CarouselWrapper = styled.div`
   width: 100%;
