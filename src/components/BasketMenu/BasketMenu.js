@@ -20,10 +20,11 @@ const BasketMenuWrapper = styled.div`
   transition: transform 300ms;
   right: 0;
   z-index: 1001;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   @media (min-width: 756px) {
     width: 50vw;
+    height: 100%;
   }
 
   @media (min-width: 1024px) {
