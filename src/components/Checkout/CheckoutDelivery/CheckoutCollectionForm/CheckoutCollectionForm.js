@@ -4,7 +4,6 @@ import { bool, func } from 'prop-types';
 
 import CheckoutButton from '../../CheckoutButton/CheckoutButton';
 import CheckoutDate from '../CheckoutDate/CheckoutDate';
-import CheckoutMethod from '../CheckoutMethod/CheckoutMethod';
 import { CheckoutContext } from '../../../../context/CheckoutContext';
 import { setDeliveryField } from '../../../../store/actions/checkout';
 
