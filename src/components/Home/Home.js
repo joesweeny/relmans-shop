@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import CategoryDisplay from './CategoryDisplay/CategoryDisplay';
 import ImageCarousel from './ImageCarousel/ImageCarousel';
 
 const HomeWrapper = styled.div`
@@ -16,6 +17,7 @@ const Home = () => {
   return (
     <HomeWrapper>
       <ImageCarousel />
+      <CategoryDisplay />
     </HomeWrapper>
   );
 };

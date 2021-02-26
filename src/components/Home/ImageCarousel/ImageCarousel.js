@@ -21,7 +21,7 @@ const CarouselWrapper = styled.div`
     }
   }
 
-  @media (min-width: 959px) {
+  @media (min-width: 1025px) {
     margin-top: 20px;
     width: 60%;
     box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.23);
