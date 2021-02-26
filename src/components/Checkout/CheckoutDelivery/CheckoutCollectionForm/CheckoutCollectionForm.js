@@ -26,7 +26,7 @@ const Info = styled.div`
   width: 100%;
   text-align: center;
   background-color: #eeeeee;
-  padding: 10px 0 0 0;
+  padding: 10px 10px 0 10px;
 
   span {
     font-size: 14px;
