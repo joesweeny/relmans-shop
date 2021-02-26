@@ -13,14 +13,14 @@ const BasketMenuWrapper = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  height: calc(100% - 60px);
   position: fixed;
   width: 100vw;
   background-color: #3d604c;
   transition: transform 300ms;
   right: 0;
   z-index: 1001;
-  overflow-y: auto;
+  overflow-y: scroll;
 
   @media (min-width: 756px) {
     width: 50vw;
