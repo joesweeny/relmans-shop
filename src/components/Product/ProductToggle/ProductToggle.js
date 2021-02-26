@@ -17,7 +17,8 @@ const ProductToggleWrapper = styled.div`
   align-items: center;
   border-radius: 0 0 10px 10px;
   font-weight: 600;
-  height: 100%;
+  height: fit-content;
+  padding: 10px;
 
   p {
     font-size: 22px;
@@ -42,7 +43,7 @@ const ProductToggleWrapper = styled.div`
 `;
 
 const ProductToggle = (props) => {
-  const { productId, priceId, name, price, size, measurement } = props;
+  const { productId, priceId, name, price, size, status, measurement } = props;
   const { items, dispatch } = useContext(CheckoutContext);
   const [count, setCount] = useState(0);
 
@@ -70,9 +71,15 @@ const ProductToggle = (props) => {
         icon={faMinusCircle}
         size="2x"
         onClick={() => remove()}
+        style={{ display: status === 'IN_STOCK' ? 'flex' : 'none' }}
       />
       <p>{count === 0 ? null : count}</p>
-      <FontAwesomeIcon icon={faPlusCircle} size="2x" onClick={() => add()} />
+      <FontAwesomeIcon
+        icon={faPlusCircle}
+        size="2x"
+        onClick={() => add()}
+        style={{ display: status === 'IN_STOCK' ? 'flex' : 'none' }}
+      />
     </ProductToggleWrapper>
   );
 };
@@ -83,6 +90,7 @@ ProductToggle.propTypes = {
   name: string.isRequired,
   price: number.isRequired,
   size: number.isRequired,
+  status: string.isRequired,
   measurement: string.isRequired,
 };
 
