@@ -49,7 +49,7 @@ const App = () => {
           fontSize: '14px',
           marginBottom: '10px',
         }}
-        buttonStyle={{ color: '#f1943c', fontSize: '13px' }}
+        buttonStyle={{ backgroundColor: '#f1943c', fontSize: '13px' }}
         expires={150}
       >
         We use cookies to improve your experience.

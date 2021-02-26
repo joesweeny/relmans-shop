@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import CategoryDisplay from './CategoryDisplay/CategoryDisplay';
 import ImageCarousel from './ImageCarousel/ImageCarousel';
+import InformationButtons from './InformationDisplay/InformationButtons';
 
 const HomeWrapper = styled.div`
   display: -ms-flexbox;
@@ -11,6 +12,7 @@ const HomeWrapper = styled.div`
   width: 100%;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 30px;
 `;
 
 const Home = () => {
@@ -18,6 +20,7 @@ const Home = () => {
     <HomeWrapper>
       <ImageCarousel />
       <CategoryDisplay />
+      <InformationButtons />
     </HomeWrapper>
   );
 };
