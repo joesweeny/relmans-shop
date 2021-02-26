@@ -52,6 +52,23 @@ const ToolbarWrapper = styled.div`
 const Toolbar = (props) => {
   const { basketOpen, clickBasket, clickMenu, menuOpen } = props;
   const { items } = useContext(CheckoutContext);
+  const { innerWidth } = window;
+
+  const toggleMenu = () => {
+    clickMenu(!menuOpen);
+
+    if (innerWidth < 959) {
+      clickBasket(false);
+    }
+  };
+
+  const toggleBasket = () => {
+    clickBasket(!basketOpen);
+
+    if (innerWidth < 959) {
+      clickMenu(false);
+    }
+  };
 
   const total = items.reduce((prev, next) => prev + next.count, 0);
 
@@ -61,12 +78,12 @@ const Toolbar = (props) => {
         color={menuOpen ? '#f1943c' : '#ffffff'}
         icon={faBars}
         size="2x"
-        onClick={() => clickMenu(!menuOpen)}
+        onClick={() => toggleMenu()}
       />
-      <Logo />
+      <Logo clickBasket={clickBasket} clickMenu={clickMenu} />
       <div
-        onClick={() => clickBasket(!basketOpen)}
-        onKeyDown={() => clickBasket(!basketOpen)}
+        onClick={() => toggleBasket()}
+        onKeyDown={() => toggleBasket()}
         role="button"
         tabIndex={0}
       >
