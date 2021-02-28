@@ -122,7 +122,10 @@ const Product = (props) => {
   return (
     <ProductWrapper>
       <Title>{name}</Title>
-      <img src={image} alt={name} />
+      <img
+        src={`https://relmans.s3.eu-west-2.amazonaws.com/products/${id}.jpg`}
+        alt={name}
+      />
       <PriceMeasurementStatus>
         <PriceMeasurement>
           <Price>£ {(price / 100).toFixed(2)}</Price>
