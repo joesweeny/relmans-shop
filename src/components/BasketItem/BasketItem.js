@@ -36,7 +36,10 @@ const BasketItem = (props) => {
 
   return (
     <BasketItemWrapper>
-      <img src={image} alt={name} />
+      <img
+        src={`https://relmans.s3.eu-west-2.amazonaws.com/products/${productId}.jpg`}
+        alt={name}
+      />
       <BasketItemInfo
         name={name}
         price={price}
