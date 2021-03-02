@@ -56,7 +56,6 @@ const Loading = styled.div`
 
 const options = {
   'client-id': process.env.REACT_APP_PAYPAL_CLIENT_ID,
-  'buyer-country': 'GB',
   currency: 'GBP',
   intent: 'capture',
   commit: true,
