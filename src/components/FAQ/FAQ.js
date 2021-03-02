@@ -73,7 +73,7 @@ const FAQ = () => {
       </FAQSection>
       <FAQSection title="Is there a minimum order?">
         There is no minimum order however any orders for delivery under £25 will
-        will be subject to a £2.50 delivery charge.
+        be subject to a £2.50 delivery charge.
       </FAQSection>
       <FAQSection title="What are my payment options?">
         Payments through the online shop are made through either PayPal or
