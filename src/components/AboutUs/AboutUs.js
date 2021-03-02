@@ -68,8 +68,7 @@ const AboutUs = () => {
           </p>
           <p>
             Sourced from UK, Europe and beyond, Relmans procure fresh produce
-            produce daily guaranteeing freshness and a superior quality of
-            goods.
+            daily, guaranteeing freshness and a superior quality of goods.
           </p>
           <p>
             Our service is built on delivery high quality produce with a
@@ -82,9 +81,9 @@ const AboutUs = () => {
           <Title>Who we serve</Title>
           <p>
             We welcome customers into our shop on Middle Street in Consett as
-            well as providing a delivery service to doorsteps of our customers
-            homes. We also provide a delivery service to our wholesale customers
-            in the following industries:
+            well as providing a delivery service to doorsteps of our
+            customer&apos;s homes. We also provide a delivery service to our
+            wholesale customers in the following industries:
           </p>
           <ul>
             <li>Pubs</li>
