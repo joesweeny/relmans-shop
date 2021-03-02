@@ -63,11 +63,11 @@ const AboutUs = () => {
         <Section align="left">
           <Title>About Us</Title>
           <p>
-            We are a family run speciality greengrocer that have been serving
+            We are a family run speciality greengrocers that have been serving
             the local community of Consett and surrounding areas since 1997.
           </p>
           <p>
-            Sourced from UK, Europe and beyond Relmans procure the fresh produce
+            Sourced from UK, Europe and beyond, Relmans procure fresh produce
             produce daily guaranteeing freshness and a superior quality of
             goods.
           </p>
