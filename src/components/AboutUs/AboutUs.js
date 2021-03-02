@@ -71,7 +71,7 @@ const AboutUs = () => {
             daily, guaranteeing freshness and a superior quality of goods.
           </p>
           <p>
-            Our service is built on delivery high quality produce with a
+            Our service is built on delivering high quality produce with a
             personal touch.
           </p>
         </Section>
@@ -93,7 +93,7 @@ const AboutUs = () => {
             <li>Bakeries</li>
           </ul>
           <p>
-            For any enquiries lease do not hesitate to call us on{' '}
+            For any enquiries please do not hesitate to call us on{' '}
             <b>01207 505001</b> or email us on <b>orders@relmans.co.uk.</b>
           </p>
         </Section>
