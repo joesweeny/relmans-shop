@@ -83,7 +83,7 @@ const FAQ = () => {
       <FAQSection title="Can I collect my order?">
         You are more than welcome to collect your order. When placing an order
         online please select the collection option and your order can be
-        collected between 10am and 3pm from:
+        collected between 11am and 3pm from:
         <p>Relmans</p>
         <p>41 Middle Street</p>
         <p>Consett</p>
