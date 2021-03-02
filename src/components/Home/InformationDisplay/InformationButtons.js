@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import {
   faInfoCircle,
   faQuestionCircle,
@@ -18,7 +19,7 @@ const InformationDisplayWrapper = styled.div`
   }
 `;
 
-const Button = styled.div`
+const Button = styled(NavLink)`
   display: -ms-flexbox;
   display: flex;
   flex-direction: row;
@@ -54,11 +55,11 @@ const Button = styled.div`
 const InformationButtons = () => {
   return (
     <InformationDisplayWrapper>
-      <Button>
+      <Button to="/about">
         <FontAwesomeIcon icon={faInfoCircle} size="2x" />
         <p>About Us</p>
       </Button>
-      <Button>
+      <Button to="/faq">
         <FontAwesomeIcon icon={faQuestionCircle} size="2x" />
         <p>FAQ</p>
       </Button>
