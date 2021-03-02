@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
-import CookieConsent from 'react-cookie-consent';
 
 import CategoryContextProvider from './context/CategoryContext';
 import CheckoutContextProvider from './context/CheckoutContext';
