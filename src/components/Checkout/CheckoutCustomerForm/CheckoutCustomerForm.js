@@ -50,7 +50,13 @@ const CheckoutCustomerForm = (props) => {
       return mainFields;
     }
 
-    return mainFields || !address.line1 || !address.postCode;
+    return (
+      mainFields ||
+      !address.line1 ||
+      !address.town ||
+      !address.county ||
+      !address.postCode
+    );
   };
 
   return (

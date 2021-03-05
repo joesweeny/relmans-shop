@@ -66,9 +66,15 @@ const CheckoutPayment = (props) => {
   const [total, setTotal] = useState(0);
   const [fee, setFee] = useState(0);
   const [loading, setLoading] = useState(false);
-  const { items, method, createNewOrder, dispatch } = useContext(
-    CheckoutContext
-  );
+  const {
+    items,
+    firstName,
+    lastName,
+    address,
+    method,
+    createNewOrder,
+    dispatch,
+  } = useContext(CheckoutContext);
 
   useEffect(() => {
     const sum = items.reduce((prev, next) => prev + next.total, 0);
@@ -89,16 +95,57 @@ const CheckoutPayment = (props) => {
   }, [items, dispatch, method.type]);
 
   const createOrder = (data, actions) => {
-    return actions.order.create({
+    const payload = {
       purchase_units: [
         {
           amount: {
             currency_code: 'GBP',
             value: ((total + fee) / 100).toString(),
+            breakdown: {
+              item_total: {
+                currency_code: 'GBP',
+                value: (total / 100).toString(),
+              },
+              shipping: {
+                currency_code: 'GBP',
+                value: fee === 0 ? '0' : (fee / 100).toString(),
+              },
+            },
+          },
+          items: items.map((i) => {
+            return {
+              name: `${i.name} (${i.size} ${i.measurement})`,
+              quantity: i.count,
+              unit_amount: {
+                currency_code: 'GBP',
+                value: (i.price / 100).toString(),
+              },
+            };
+          }),
+          payee: {
+            email_address: 'orders@relmans.co.uk',
+          },
+          shipping: {
+            name: {
+              full_name: `${firstName} ${lastName}`,
+            },
+            address:
+              method.type === 'DELIVERY'
+                ? {
+                    address_line_1: address.line1,
+                    address_line_2: address.line2,
+                    admin_area_2: address.town,
+                    admin_area_1: address.county,
+                    postal_code: address.postCode,
+                    country_code: 'GB',
+                  }
+                : null,
           },
         },
       ],
-    });
+    };
+
+    return actions.order.create(payload);
   };
 
   const onApprove = (data, actions) => {
