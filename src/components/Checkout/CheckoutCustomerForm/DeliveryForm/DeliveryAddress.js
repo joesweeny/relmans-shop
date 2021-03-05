@@ -54,18 +54,9 @@ const DeliveryAddress = () => {
       </Row>
       <Row>
         <CheckoutInput
-          update={(v) => dispatch(setAddressField('line3', v))}
-          type="text"
-          label="Address Line 3"
-          width="97%"
-          value={address.line3 ?? ''}
-        />
-      </Row>
-      <Row>
-        <CheckoutInput
           update={(v) => dispatch(setAddressField('town', v))}
           type="text"
-          label="Town"
+          label="Town*"
           width="97%"
           value={address.town ?? ''}
         />
@@ -74,7 +65,7 @@ const DeliveryAddress = () => {
         <CheckoutInput
           update={(v) => dispatch(setAddressField('county', v))}
           type="text"
-          label="County"
+          label="County*"
           width="95%"
           value={address.county ?? ''}
         />
