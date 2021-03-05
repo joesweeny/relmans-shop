@@ -9,8 +9,8 @@ const ProductListWrapper = styled.div`
   display: flex;
   -webkit-flex-direction: row;
   flex-direction: row;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
+  justify-content: ${(props) =>
+    props.length < 4 ? 'center' : 'space-between'};
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
 
@@ -23,7 +23,7 @@ const ProductList = (props) => {
   const { products } = props;
 
   return (
-    <ProductListWrapper>
+    <ProductListWrapper length={products.length}>
       {products.map((p) => {
         return p.prices.map((pr) => {
           return (
