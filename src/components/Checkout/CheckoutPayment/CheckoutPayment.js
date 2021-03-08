@@ -11,6 +11,7 @@ import CheckoutTitle from '../CheckoutTitle/CheckoutTitle';
 import PaymentTotal from './PaymentTotal/PaymentTotal';
 import { CheckoutContext } from '../../../context/CheckoutContext';
 import { setDeliveryField } from '../../../store/actions/checkout';
+import { updateOrder } from '../../../gateway/client';
 
 const CheckoutPaymentWrapper = styled.div`
   display: -ms-flexbox;
@@ -145,16 +146,20 @@ const CheckoutPayment = (props) => {
       ],
     };
 
-    return actions.order.create(payload);
+    return actions.order.create(payload).then((id) => {
+      createNewOrder(id);
+      return id;
+    });
   };
 
   const onApprove = (data, actions) => {
     setLoading(true);
 
     return actions.order.capture().then((details) => {
-      createNewOrder(details.id);
-      setLoading(false);
-      nextStep((prev) => prev + 1);
+      updateOrder(details.id, { status: 'PAYMENT_RECEIVED' }).then(() => {
+        setLoading(false);
+        nextStep((prev) => prev + 1);
+      });
     });
   };
 

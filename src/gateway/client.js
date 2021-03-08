@@ -14,3 +14,7 @@ export const createOrder = async (payload) => {
   const response = await axios.post('/order', payload);
   return response.data.id;
 };
+
+export const updateOrder = async (id, payload) => {
+  await axios.patch(`/order/${id}`, payload);
+};
