@@ -87,10 +87,10 @@ const Price = styled.span`
   padding: 5px;
   color: #3d604c;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
 
   @media (min-width: 1024px) {
-    font-size: 24px;
+    font-size: 22px;
     padding: 10px;
   }
 `;

@@ -152,6 +152,12 @@ const CheckoutPayment = (props) => {
     });
   };
 
+  const onCancel = (data) => {
+    updateOrder(data.orderID, { status: 'CANCELLED' }).then(() => {
+      setLoading(false);
+    });
+  };
+
   const onApprove = (data, actions) => {
     setLoading(true);
 
@@ -188,6 +194,7 @@ const CheckoutPayment = (props) => {
         <PayPalButtons
           createOrder={(data, actions) => createOrder(data, actions)}
           onApprove={(data, actions) => onApprove(data, actions)}
+          onCancel={(data, actions) => onCancel(data, actions)}
           className="paypal"
           forceReRender={total}
         />
