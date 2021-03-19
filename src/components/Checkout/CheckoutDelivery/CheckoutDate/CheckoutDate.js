@@ -45,12 +45,12 @@ const CheckoutDate = (props) => {
     return day !== 0 && day !== 1;
   };
 
-  const minDate = new Date(Date.now() + 3600 * 1000 * 24).setHours(9, 0, 0);
+  const minDate = new Date(Date.now() + 3600 * 1000 * 24).setHours(11, 0, 0);
 
   return (
     <CheckoutDateWrapper>
       <DatePicker
-        selected={selectedDate}
+        selected={selectedDate ?? minDate}
         filterDate={dates}
         minDate={minDate}
         minTime={new Date().setHours(11, 0, 0)}
