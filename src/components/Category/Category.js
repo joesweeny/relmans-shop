@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router';
 import { NavLink } from 'react-router-dom';
-import { faAngleRight, faHome } from '@fortawesome/free-solid-svg-icons';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Loader from '../Loader/Loader';
@@ -29,7 +29,7 @@ const Breadcrumbs = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  font-size: 28px;
+  font-size: 22px;
   color: #3d604c;
   margin: 10px;
   align-items: center;
@@ -45,6 +45,7 @@ const Breadcrumbs = styled.div`
 
   @media (min-width: 1025px) {
     width: 80%;
+    font-size: 28px;
   }
 `;
 
@@ -77,9 +78,8 @@ const Category = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [category, setCategory] = useState(null);
   const { categories } = useContext(CategoryContext);
-
-  const category = categories.find((c) => c.id === id);
 
   useEffect(() => {
     getProducts(id)
@@ -92,7 +92,10 @@ const Category = () => {
         setError('Error fetching products');
         setLoading(false);
       });
-  }, [id]);
+
+    const cat = categories.find((c) => c.id === id);
+    setCategory(cat);
+  }, [id, categories]);
 
   return (
     <CategoryWrapper>
@@ -102,7 +105,7 @@ const Category = () => {
           <HomeButton to="/">
             <FontAwesomeIcon icon={faHome} size="1x" />
           </HomeButton>
-          <span>{category.name}</span>
+          <span>{category !== null ? category.name : null}</span>
         </Breadcrumbs>
         <ProductList products={products} />
       </Loader>
