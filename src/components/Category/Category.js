@@ -78,7 +78,6 @@ const Category = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [category, setCategory] = useState(null);
   const { categories } = useContext(CategoryContext);
 
   useEffect(() => {
@@ -92,10 +91,9 @@ const Category = () => {
         setError('Error fetching products');
         setLoading(false);
       });
-
-    const cat = categories.find((c) => c.id === id);
-    setCategory(cat);
   }, [id, categories]);
+
+  const category = categories.find((c) => c.id === id);
 
   return (
     <CategoryWrapper>
@@ -105,7 +103,7 @@ const Category = () => {
           <HomeButton to="/">
             <FontAwesomeIcon icon={faHome} size="1x" />
           </HomeButton>
-          <span>{category !== null ? category.name : null}</span>
+          <span>{category !== undefined ? category.name : null}</span>
         </Breadcrumbs>
         <ProductList products={products} />
       </Loader>
