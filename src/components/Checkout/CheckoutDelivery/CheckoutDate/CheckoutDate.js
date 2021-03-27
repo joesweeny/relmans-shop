@@ -45,7 +45,7 @@ const CheckoutDate = (props) => {
     return day !== 0 && day !== 1 && day !== 5;
   };
 
-  const minDate = new Date(Date.now() + 3600 * 1000 * 24).setHours(10, 30, 0);
+  const minDate = new Date(Date.now() + 3600 * 1000 * 24).setHours(11, 0, 0);
 
   return (
     <CheckoutDateWrapper>
