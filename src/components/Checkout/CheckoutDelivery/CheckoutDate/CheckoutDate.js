@@ -50,12 +50,11 @@ const CheckoutDate = (props) => {
   return (
     <CheckoutDateWrapper>
       <DatePicker
-        selected={selectedDate ?? minDate}
+        selected={selectedDate}
         filterDate={dates}
         minDate={minDate}
         minTime={new Date().setHours(11, 0, 0)}
         maxTime={new Date().setHours(15, 0, 0)}
-        openToDate={minDate}
         onChange={(date) => setSelectedDate(date)}
         placeholderText="Click to select a date"
         dateFormat={isCollection ? 'd MMMM yyyy - h:mm aa' : 'd MMMM yyyy'}
