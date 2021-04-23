@@ -46,12 +46,18 @@ const CheckoutContextProvider = (props) => {
       };
     });
 
+    const date = new Date(state.method.date);
+
+    if (state.method.type === 'DELIVERY') {
+      date.setHours(date.getHours() + 1);
+    }
+
     const payload = {
       ...state,
       orderNumber,
       method: {
         ...state.method,
-        date: new Date(state.method.date).toISOString(),
+        date: date.toISOString(),
       },
       items,
     };
