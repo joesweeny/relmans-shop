@@ -49,7 +49,10 @@ const CheckoutDeliveryForm = (props) => {
       {isValid && isSelected ? (
         <Info>
           <span>Please select a date for delivery.</span>
-          <span>We deliver Tuesday to Saturday between 11am and 2pm.</span>
+          <span>
+            We deliver Tuesday to Saturday between 11am and 2pm and accept
+            orders up to one week in advance
+          </span>
           <CheckoutDate
             isCollection={false}
             selectedDate={method.date}

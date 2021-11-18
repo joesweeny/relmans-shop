@@ -46,6 +46,7 @@ const CheckoutDate = (props) => {
   };
 
   const minDate = new Date(Date.now() + 3600 * 1000 * 24).setHours(11, 0, 0);
+  const maxDate = new Date(Date.now() + 3600 * 1000 * 192).setHours(15, 0, 0);
 
   return (
     <CheckoutDateWrapper>
@@ -53,6 +54,7 @@ const CheckoutDate = (props) => {
         selected={selectedDate}
         filterDate={dates}
         minDate={minDate}
+        maxDate={maxDate}
         minTime={new Date().setHours(11, 0, 0)}
         maxTime={new Date().setHours(15, 0, 0)}
         onChange={(date) => setSelectedDate(date)}

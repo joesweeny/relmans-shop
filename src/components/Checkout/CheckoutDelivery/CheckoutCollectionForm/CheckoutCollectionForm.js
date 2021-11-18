@@ -52,7 +52,8 @@ const CheckoutCollectionForm = (props) => {
       {isSelected ? (
         <Info>
           <span>
-            We are open Tuesday to Saturday.
+            We are open Tuesday to Saturday and accept orders up to one week in
+            advance.
             <br /> Please select a date and time to collect your order between
             11am and 3pm from:
           </span>
