@@ -51,6 +51,10 @@ const CheckoutCollectionForm = (props) => {
     <CheckoutCollectionFormWrapper>
       {isSelected ? (
         <Info>
+          <p>
+            Apologies but we are no longer taking orders for Thursday 23rd
+            December as we are fully booked
+          </p>
           <span>
             We are open Tuesday to Saturday and accept orders up to one week in
             advance.
