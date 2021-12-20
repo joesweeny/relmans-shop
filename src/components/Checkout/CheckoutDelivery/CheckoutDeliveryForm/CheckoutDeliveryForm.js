@@ -49,8 +49,8 @@ const CheckoutDeliveryForm = (props) => {
       {isValid && isSelected ? (
         <Info>
           <p>
-            Apologies but we are no longer taking orders for Thursday 23rd
-            December as we are fully booked
+            Apologies but we are no longer taking orders for Wednesday 22nd and
+            Thursday 23rd December as we are fully booked
           </p>
           <span>Please select a date for delivery.</span>
           <span>
