@@ -48,10 +48,6 @@ const CheckoutDeliveryForm = (props) => {
       ) : null}
       {isValid && isSelected ? (
         <Info>
-          <p>
-            Apologies but we are no longer taking orders for Wednesday 22nd and
-            Thursday 23rd December as we are fully booked
-          </p>
           <span>Please select a date for delivery.</span>
           <span>
             We deliver Tuesday to Saturday between 11am and 2pm and accept
