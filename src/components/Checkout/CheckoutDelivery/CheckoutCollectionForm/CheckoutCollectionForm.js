@@ -51,6 +51,7 @@ const CheckoutCollectionForm = (props) => {
     <CheckoutCollectionFormWrapper>
       {isSelected ? (
         <Info>
+          <p>Apologies but we are closed Saturday 4th June 2022</p>
           <span>
             We are open Tuesday to Saturday and accept orders up to one week in
             advance.
