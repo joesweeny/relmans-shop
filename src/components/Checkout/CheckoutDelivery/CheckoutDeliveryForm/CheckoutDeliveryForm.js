@@ -48,7 +48,6 @@ const CheckoutDeliveryForm = (props) => {
       ) : null}
       {isValid && isSelected ? (
         <Info>
-          <p>Apologies but we are closed Saturday 4th June 2022</p>
           <span>Please select a date for delivery.</span>
           <span>
             We deliver Tuesday to Saturday between 11am and 2pm and accept
