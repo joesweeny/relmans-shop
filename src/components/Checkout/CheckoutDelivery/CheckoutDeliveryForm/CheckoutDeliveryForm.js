@@ -51,7 +51,7 @@ const CheckoutDeliveryForm = (props) => {
           <p>
             All Christmas delivery slots on 22nd and 23rd December are full. We
             are also closed on 27th December 2022 and 3rd January 2023. Thank
-            you for continued business.
+            you for your continued business.
           </p>
           <span>Please select a date for delivery.</span>
           <span>
