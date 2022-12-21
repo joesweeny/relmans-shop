@@ -52,9 +52,9 @@ const CheckoutCollectionForm = (props) => {
       {isSelected ? (
         <Info>
           <p>
-            All Christmas collection slots on 23rd December are full. We are
-            also closed on 27th December 2022 and 3rd January 2023. Thank you
-            for continued business.
+            All Christmas collection slots on 22nd and 23rd December are full.
+            We are also closed on 27th December 2022 and 3rd January 2023. Thank
+            you for your continued business.
           </p>
           <span>
             We are open Tuesday to Saturday and accept orders up to one week in
