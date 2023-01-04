@@ -48,10 +48,6 @@ const CheckoutDeliveryForm = (props) => {
       ) : null}
       {isValid && isSelected ? (
         <Info>
-          <p>
-            We are closed on 27th December 2022 and 3rd January 2023. Thank you
-            you for your continued business.
-          </p>
           <span>Please select a date for delivery.</span>
           <span>
             We deliver Tuesday to Saturday between 11am and 2pm and accept
