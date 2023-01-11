@@ -53,6 +53,7 @@ const CheckoutDate = (props) => {
       <DatePicker
         selected={selectedDate}
         filterDate={dates}
+        excludeDates={[new Date()]}
         minDate={minDate}
         maxDate={maxDate}
         minTime={new Date().setHours(11, 0, 0)}
