@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useReducer } from 'react';
+import React, { createContext, useReducer } from 'react';
 import { node } from 'prop-types';
 
 import reducer from '../store/reducers/checkout';
@@ -26,15 +26,11 @@ const CheckoutContextProvider = (props) => {
       date: null,
       fee: 0,
     },
-    items: JSON.parse(localStorage.getItem('relmansshop')) || [],
+    items: [],
   };
 
   const { children } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  useEffect(() => {
-    localStorage.setItem('relmansshop', JSON.stringify(state.items));
-  }, [state.items]);
 
   const createNewOrder = (orderNumber) => {
     const items = state.items.map((i) => {
