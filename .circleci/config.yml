@@ -10,6 +10,8 @@ jobs:
       name: node/default
     steps:
       - checkout
+      - - node/install:
+            node-version: '16.13'
       - run: sudo npm install -g npm@8.1.0
       - node/install-packages:
           override-ci-command: npm install
