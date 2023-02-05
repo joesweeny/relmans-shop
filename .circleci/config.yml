@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  node: circleci/node@4.1.0
+  node: circleci/node@5.1.0
   aws-cli: circleci/aws-cli@1.4.0
   aws-s3: circleci/aws-s3@2.0.0
 
@@ -10,7 +10,11 @@ jobs:
       name: node/default
     steps:
       - checkout
-      - node/install-packages
+      - node/install:
+          node-version: '16.13'
+      - run: sudo npm install -g npm@8.1.0
+      - node/install-packages:
+          override-ci-command: npm install
       - run:
           command: npm run lint
       - run:

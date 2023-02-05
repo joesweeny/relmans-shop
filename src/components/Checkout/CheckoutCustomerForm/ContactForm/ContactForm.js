@@ -30,9 +30,8 @@ const Row = styled.div`
 `;
 
 const ContactForm = () => {
-  const { firstName, lastName, phone, email, dispatch } = useContext(
-    CheckoutContext
-  );
+  const { firstName, lastName, phone, email, dispatch } =
+    useContext(CheckoutContext);
 
   return (
     <ContactFormWrapper>

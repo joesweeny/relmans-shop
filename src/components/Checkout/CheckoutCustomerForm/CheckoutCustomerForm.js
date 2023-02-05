@@ -39,9 +39,8 @@ const CheckoutCustomerFormWrapper = styled.div`
 
 const CheckoutCustomerForm = (props) => {
   const { nextStep } = props;
-  const { method, firstName, lastName, phone, email, address } = useContext(
-    CheckoutContext
-  );
+  const { method, firstName, lastName, phone, email, address } =
+    useContext(CheckoutContext);
 
   const isDisabled = () => {
     const mainFields = !firstName || !lastName || !email || !phone;
