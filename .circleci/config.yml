@@ -12,6 +12,8 @@ jobs:
       - checkout
       - node/install-packages
       - run:
+          command: npm install
+      - run:
           command: npm run lint
       - run:
           command: npm run build
